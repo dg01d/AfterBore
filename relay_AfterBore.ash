@@ -1,8 +1,10 @@
 // ShaBob's RELAY_AFTERBORE Script
 // http://kolmafia.us/showthread.php?t=
 
-script "relay_AfterBore.ash";
+
 notify "ShaBob";
+import "htmlform.ash"; 
+import "zlib.ash"
 string thisver = "1.0.0";		// This is the script's version!
 
 
@@ -18,8 +20,7 @@ string thisver = "1.0.0";		// This is the script's version!
 //             All Comments Welcome                                 //
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
-import "htmlform.ash"; 
-import "zlib.ash"
+
 
 void main() { 
     	write_page(); 
