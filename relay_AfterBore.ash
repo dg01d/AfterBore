@@ -40,30 +40,25 @@ void main() {
 
 		writeln("<br />");
 
-//		write_label("Food to Eat", "Special Food to Eat");
-//		attr("size='24'");
-//		set_property("boreDiet_Food", write_field(get_property("boreDiet_Food"), "Diet Food", ""));
+
 		set_property( "boreDiet_Food", write_choice(get_property("boreDiet_Food"), "boreDiet_Food", "Special Food to Eat", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries]) );
 		writeln("<br />");
 		writeln("<br />");
 		set_property("boreDrink", write_check(get_property("boreDrink").to_boolean(), 
 	  "boreDrink", "Drink Special Drink in AfterBore?"));
 		writeln("<br />");
-//		write_label("Drink to Drink", "Special Drink to, er, Drink");
-//		attr("size='24'");
-//		set_property("boreDiet_Drink", write_field(get_property("boreDiet_Drink"), "Drink Drink", ""));		
 		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "Special Drink to Drink", $strings[White Canadian, Tomato Daquiri]) );
+		writeln("<br />");
+		set_property( "boreDiet_Drink_Filler", write_choice(get_property("boreDiet_Drink_Filler"), "boreDiet_Drink_Filler", "Filler Drink to Use (all 1 drunk)", $strings[pumpkin beer, distilled fortified wine, thermos full of Knob coffee, Moonthril Schnapps, cup of primitive beer, can of Swiller, McMillicancuddy's Special Lager, melted Jell-o shot, thistle wine, cruelty-free wine, elven cellocello, herringcello, slimy fermented bile bladder, Cobb's Knob Wurstbrau, shot of blackberry schnapps, cream stout, Russian Ice, shot of rotgut, booze-soaked cherry, gin-soaked blotter paper, fine wine, shot of flower schnapps, shot of grapefruit schnapps, shot of orange schnapps, shot of tomato schnapps, Ram's Face Lager, ice-cold Sir Schlitz, ice-cold Willer, Imp Ale, plastic cup of beer]) );
 		writeln("<br />");
 		writeln("<br />");
 		set_property("boreSpleen", write_check(get_property("boreSpleen").to_boolean(), 
 		"boreSpleen", "Use particular Spleen Item in AfterBore?"));
 		writeln("<br />");
-//		write_label("Spleen Item to Use", "Spleen Item to Use");
-//		attr("size='24'");
-//		set_property("boreDiet_Spleen", write_field(get_property("boreDiet_Spleen"), "Diet Spleen", ""));		
 		set_property( "boreDiet_Spleen", write_choice(get_property("boreDiet_Spleen"), "boreDiet_Spleen", "Special Spleen Item", $strings[Agua de Vida, Roc Feather, Coffee Pixie Sticks, Beastly paste, Bug paste, Cloryphyll paste, Cosmic paste, Crimbo paste, Demonic paste, Ectoplasmic paste, Elemental paste, Fishy paste, Goblin paste, Gooey paste, Greasy paste, Hippy paste, Hobo paste, Indescribably Horrible paste, Mer-Kin paste, Oily paste, Orc paste, Penguin paste, Pirate paste, Slimy paste, Strange paste ]) );
 		writeln("<br />");
 		writeln("<br />");
+
 // Clodhoppering
 		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), 
 	  "boreClod", "Use Fax&Putty to Fight ClodHoppers & Collect Floaty Sand in AfterBore"));
