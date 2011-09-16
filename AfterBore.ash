@@ -48,7 +48,9 @@ boolean safe_cli_execute( string cmd )
 
 item BORE_FOOD = get_property("boreDiet_Food").to_item();
 item BORE_DRINK = get_property("boreDiet_Drink").to_item();
+item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
 item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
+string BORE_MOB = get_property("boreMonster").to_monster();
 
 
 // Donation Script from slyz
@@ -103,7 +105,7 @@ void best_fam()
 void pvp()
 	{
 		print_html("<b>AfterBore:</b> Commencing Flower Picking For Your Convenience");
-
+		maximize ("mox", false );
 		best_fam();
 		cli_execute ("flowers");
 
@@ -114,12 +116,27 @@ void drink()
 	{
 		print_html("<b>AfterBore:</b> About to Start in on the Booze");
 
-		if (have_skill($skill[Ode to Booze]) )
+		if (have_skill($skill[Ode to Booze]) )	use_skill( 1 , $skill[ ode to booze] );
+		else 
 		{
-			use_skill( 1 , $skill[ ode to booze] );
+			print("purchasing Ode to Booze from a buffbot...", "blue");
+			cli_execute("csend 1 meat to Testudinata");
+			int iterations = 0;
+			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
+			   wait(30);
+			   refresh_status();
+			   iterations = iterations + 1;
+			}	
+			if(have_effect($effect[Ode to Booze]) < 1){
+			   print("failed to get Ode to Booze", "red");
+			   }
+			  else print ("Ready to rock!", "green" );
 		}
 		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
 		drink(amount, BORE_DRINK);
+
+		int fillup = floor(inebriety_limit() - my_inebriety());
+		drink(fillup, BORE_DRINK_FILLER);
 	}
 
 
@@ -155,7 +172,7 @@ void clod()
 		print_html("<b>AfterBore:</b> Fighting your Selected Monster.");
 
 		if( !is_online( "faxbot" ) ) abort( "Faxbot is dead!" );
-		while ( get_property( "photocopyMonster" ).to_monster() != $monster[ clodhopper ] )
+		while ( get_property( "photocopyMonster" ).to_monster() != BORE_MOB )
 		{
 			if (item_amount ( $item[photocopied monster] ) != 0)
 			{
@@ -294,44 +311,24 @@ void run()
 	if (my_inebriety() < inebriety_limit())
 	
 	{
-		if (get_property("borePvp")== true) 
-		{
-			pvp();
-		}
-		if (get_property("boreDrink")== true) 
-		{
-			drink();
-		}
-		if (get_property("boreDiet")== true) 
-		{
-			diet();
-		}
-		if (get_property("boreSpleen")== true) 
-		{
-			spleen();
-		}
-		if (get_property("boreClod")== true) 
-		{
-			clod();
-		}
-		if (get_property("boreShore")== true) 
-		{
-			shoretrip();
-		}
-		if (get_property("boreDonate")== true) 
-		{
-		donate();
-		}
+		if (get_property("borePvp")== true) pvp();
+		if (get_property("boreDrink")== true) drink();
+		if (get_property("boreDiet")== true) diet();
+		if (get_property("boreSpleen")== true) spleen();
+		if (get_property("boreClod")== true) clod();
+		if (get_property("boreShore")== true) shoretrip();
+		if (get_property("boreDonate")== true) donate();
 		summary();
 	
 	}
-	if (my_inebriety() == inebriety_limit())
+	if (my_inebriety() == inebriety_limit()) 
 	{
-		if (get_property("boreRollover")== true) 
+		if   ( get_property("boreRollover")== true)
 		{
 			rollover();
 		}
 	}
+	
 }
 
 void main()
