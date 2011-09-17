@@ -27,18 +27,26 @@ void main() {
 //	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, 7015));     
 	writeln("<br />");	
 	write_box("AfterBore Settings");
-
+	writeln("<table");
 // Pvp
+		writeln("<tr><td><b>PvP</b></td></tr>");
+		writeln("<tr><td>Collect Pretty Flowers?</td>");
+		writeln("<td>")
 		set_property("borePvp", write_check(get_property("borePvp").to_boolean(), 
 		"borePvp", "Collect Pretty Flowers in AfterBore?"));
-		writeln("<br />");
-		writeln("<br />");
+		writeln("</td></tr>");
+
+//		writeln("<br />");
+//		writeln("<br />");
 
 // Dieting
+		writeln("<tr><td><b>Dieting</b></td></tr>");
+		writeln("<tr><td>Eat Special Foods for Trophy in AfterBore?</td>");
+		writeln("<td>")
 		set_property("boreDiet", write_check(get_property("boreDiet").to_boolean(), 
 		"boreDiet", "Eat Special Foods for Trophy in AfterBore?"));
-
-		writeln("<br />");
+		writeln("</td></tr>");
+//		writeln("<br />");
 
 
 		set_property( "boreDiet_Food", write_choice(get_property("boreDiet_Food"), "boreDiet_Food", "Special Food to Eat", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries]) );
