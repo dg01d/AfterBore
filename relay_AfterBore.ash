@@ -5,7 +5,7 @@
 notify "ShaBob";
 import "htmlform.ash"; 
 import "zlib.ash"
-string thisver = "1.0.0";		// This is the script's version!
+string thisver = "0.9.1";		// This is the script's version!
 
 
 // Thanks to those whose work has been absorbed to make this: 
@@ -27,7 +27,7 @@ void main() {
 //	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, 7015));     
 	writeln("<br />");	
 	write_box("AfterBore Settings");
-	writeln("<table");
+	writeln("<table>");
 // Pvp
 		writeln("<tr><td><b>PvP</b></td></tr>");
 		writeln("<tr><td>Collect Pretty Flowers in AFterBore?</td>");
@@ -90,6 +90,7 @@ void main() {
 //		writeln("<br />");
 
 // Clodhoppering
+		writeln("<tr><td><b>Fighting & Collecting</b></td></tr>");
 		writeln("<tr><td>Use Fax, 4d, Putty to Fight Monster in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), 
@@ -113,7 +114,7 @@ void main() {
 
 //		writeln("<br />");
 // Donating
-
+		writeln("<tr><td><b>Donating</b></td></tr>");
 		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreDonate", write_check(get_property("boreDonate").to_boolean(), 
@@ -123,6 +124,7 @@ void main() {
 //		writeln("<br />");
 
 // Shoretrips
+		writeln("<tr><td><b>Tripping</b></td></tr>");
 		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), 
@@ -139,6 +141,7 @@ void main() {
 		writeln("</td></tr>");
 		
 // Rollover
+		writeln("<tr><td><b>Rollover</b></td></tr>");
 		writeln("<tr><td>Allow Afterbore.ash to manage your rollover?</td>");
 		writeln("<td>");
 		set_property("boreRollover", write_check(get_property("boreRollover").to_boolean(), 
