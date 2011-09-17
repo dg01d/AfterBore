@@ -93,7 +93,7 @@ void main() {
 		writeln("<tr><td>Use Fax, 4d, Putty to Fight Monster in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), 
-	  "boreClod", "Use Fax&Putty to Fight ClodHoppers & Collect Floaty Sand in AfterBore"));
+	  "boreClod", ""));
 		writeln("</td></tr>");
 
 //		writeln("<br />");
@@ -117,7 +117,7 @@ void main() {
 		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreDonate", write_check(get_property("boreDonate").to_boolean(), 
-		"boreDonate", "Donate to the Statues"));
+		"boreDonate", ""));
 		writeln("</td></tr>");
 
 //		writeln("<br />");
@@ -127,9 +127,11 @@ void main() {
 		writeln("<td>");
 		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), 
 		"boreShore", ""));
-		writeln("</td>");
+		writeln("</td></tr>");
+//		writeln("<tr><td>");
+		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
-		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Shoretrips Taken To Date", ""));
+		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong", ""));
 		writeln("</td></tr>");
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
