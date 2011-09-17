@@ -111,7 +111,7 @@ void pvp()
 
 	}
 
-// Drinks the User Selected Drink
+// Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
 	{
 		print_html("<b>AfterBore:</b> About to Start in on the Booze");
@@ -165,7 +165,7 @@ void spleen()
 
 	}
 
-// Fights Clod Hoppers. This will be likely changed to a user-selectable mob
+// Fights Monster as selected by the user. 
 // The Script maximizes itemdrops, and can become somewhat expensive :)
 void clod()
 	{
@@ -321,7 +321,7 @@ void run()
 		summary();
 	
 	}
-	if (my_inebriety() == inebriety_limit()) 
+	if (my_inebriety() == inebriety_limit()) // A single if-if should not need to be nested, but it didn't work.
 	{
 		if   ( get_property("boreRollover")== true)
 		{
