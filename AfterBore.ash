@@ -51,7 +51,7 @@ item BORE_DRINK = get_property("boreDiet_Drink").to_item();
 item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
 item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
 string BORE_MOB = get_property("boreMonster").to_monster();
-
+string BORE_FAX = get_property("boreMonster");
 
 // Donation Script from slyz
 
@@ -172,13 +172,13 @@ void clod()
 		print_html("<b>AfterBore:</b> Fighting your Selected Monster.");
 
 		if( !is_online( "faxbot" ) ) abort( "Faxbot is dead!" );
-		while ( get_property( "photocopyMonster" ).to_monster() != BORE_MOB )
+		while ( get_property( "photocopyMonster" ) != BORE_MOB )
 		{
 			if (item_amount ( $item[photocopied monster] ) != 0)
 			{
 				cli_execute ("fax put");
 			}
-			chat_private ("faxbot", "clodhopper");
+			chat_private ("faxbot", BORE_FAX );
 			wait (60);
 			cli_execute ("fax get");
 		}
