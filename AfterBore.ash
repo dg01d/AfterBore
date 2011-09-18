@@ -3,6 +3,7 @@
 
 notify ShaBob;
 import <zlib.ash>
+import <eatdrink.ash>
 //script "AfterBore.ash";
 
 string thisver = "0.9";		// This is the script's version!
@@ -135,6 +136,7 @@ void get_ode()
 	   }
 
 	}
+}
 
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
