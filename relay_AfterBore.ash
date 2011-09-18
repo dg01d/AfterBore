@@ -4,6 +4,7 @@
 
 notify "ShaBob";
 import "htmlform.ash"; 
+import "consumption.ash";
 import "zlib.ash"
 string thisver = "0.9.1";		// This is the script's version!
 
@@ -46,7 +47,47 @@ void main() {
 		set_property("boreDiet", write_check(get_property("boreDiet").to_boolean(), 
 		"boreDiet", ""));
 		writeln("</td></tr>");
+		writeln("<tr><td align=\"right\">Food Trophy Consumption To Date</td></tr>");
 
+/*		writeln("<tr><td>Spaghetti with Skullheads</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[spaghetti with skullheads]] + "/5");
+		writeln("</tr></td>");
+*/
+/*
+		writeln("<tr><td>Ghuol Guolash</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[ghuol guolash]] + "/11");
+		writeln("</tr></td>");
+*/
+		writeln("<tr><td align=\"right\">Herb Brownies</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[herb brownies]] + "/420");
+		writeln("</tr></td>");
+/*
+		writeln("<tr><td>White Choc & Tomato Pizza</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[white chocolate and tomato pizza]] + "/5");
+		writeln("</tr></td>");
+		writeln("<tr><td>Lucky Surprise Egg</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[lucky surprise egg]] + "/5");
+		writeln("</tr></td>");
+*/
+		writeln("<tr><td align=\"right\">Black Pudding</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[black pudding]] + "/500");
+		writeln("</tr></td>");
+
+		writeln("<tr><td align=\"right\">White Citadel Burger</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[White Citadel Burger]] + "/60");
+		writeln("</tr></td>");
+
+		writeln("<tr><td align=\"right\">White Citadel Fries</td>");
+		writeln("<td>");
+		writeln("" +food_consumed[$item[White Citadel Fries]] + "/10");
+		writeln("</tr></td>");
 
 		writeln("<tr><td>Special Food to Eat</td>");
 		writeln("<td>");
@@ -61,9 +102,27 @@ void main() {
 	  "boreDrink", ""));
 		writeln("</td></tr>");
 
+		writeln("<tr><td align=\"right\">Booze Trophy Consumption To Date</td></tr>");
+		
+		writeln("<tr><td align=\"right\">Around the World</td>");
+		writeln("<td>");
+		writeln("" +booze_consumed[$item[Around the World]] + "/80");
+		writeln("</tr></td>");
+
+		writeln("<tr><td align=\"right\">White Canadian</td>");
+		writeln("<td>");
+		writeln("" +booze_consumed[$item[White Canadian]] + "/30");
+		writeln("</tr></td>");
+
+		writeln("<tr><td align=\"right\">Tomato Daiquiri</td>");
+		writeln("<td>");
+		writeln("" +booze_consumed[$item[tomato daiquiri]] + "/30");
+		writeln("</tr></td>");
+
+
 		writeln("<tr><td>Drink to Drink</td>");
 		writeln("<td>");
-		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daquiri]) );
+		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daquiri, Around the World]) );
 		writeln("</td></tr>");
 
 
