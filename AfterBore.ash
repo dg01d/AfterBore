@@ -6,14 +6,14 @@ import <zlib.ash>
 import <eatdrink.ash>
 //script "AfterBore.ash";
 
-string thisver = "0.9.3";		// This is the script's version!
+string thisver = "0.9.3.1";		// This is the script's version!
 
  
 // check_version("AfterBore", "AfterBore", thisver, 7015)
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, slyz & Especially Panama Joe whose script this is.
-//
+
 //////////////////////////////////////////////////////////////////////
 //                                                                  //
 //             You MUST run the Relay Script to                     //
