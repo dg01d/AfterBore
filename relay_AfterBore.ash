@@ -97,6 +97,10 @@ void main() {
 	  "boreClod", ""));
 		writeln("</td></tr>");
 
+		writeln("<tr><td>Monster to fight - <b>Use Faxbot Name!</b></td>");
+		writeln("<td>");
+		attr("size='24'");
+		set_property("boreMonster", write_field(get_property("boreMonster"), "Monster Name", ""));
 
 		writeln("<tr><td>CCS to use for 4D Camera</td>");
 //		write_label("Camera CCS", "CCS to use for 4D Camera");
