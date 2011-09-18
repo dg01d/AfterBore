@@ -6,7 +6,7 @@ notify "ShaBob";
 import "htmlform.ash"; 
 import "consumption.ash";
 import "zlib.ash"
-string thisver = "0.9.1";		// This is the script's version!
+string thisver = "0.9.3";		// This is the script's version!
 
 
 // Thanks to those whose work has been absorbed to make this: 
@@ -27,7 +27,7 @@ void main() {
     	write_page(); 
 //	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, 7015));     
 	writeln("<br />");	
-	write_box("AfterBore Settings");
+	write_box("AfterBore Settings v"+ thisver);
 	writeln("<table>");
 // Pvp
 		writeln("<tr><td><b>PvP</b></td></tr>");
