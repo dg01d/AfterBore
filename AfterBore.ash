@@ -111,30 +111,57 @@ void pvp()
 
 	}
 
+void get_ode()
+	{
+	while ((have_effect($effect[ode to booze]) < inebriety_limit() ) && have_skill($skill[ode to booze]))
+	{
+	   use_skill(1 , $skill[ode to booze]);
+   	}
+	if ( ! have_skill ( $skill [ode to booze] ))
+	{
+		print("purchasing Ode to Booze from a buffbot...", "blue");
+		if ( have_effect ( $effect [polka of plenty]) > 0 )
+		cli_execute ("shrug polka" );
+		cli_execute("csend 1 meat to Testudinata");
+		int iterations = 0;
+		while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
+		   wait(30);
+		   refresh_status();
+		   iterations = iterations + 1;
+	   }
+	if(have_effect($effect[Ode to Booze]) < 1)
+	{
+	   print("failed to get Ode to Booze", "red");
+	   }
+
+	}
+
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
 	{
 		print_html("<b>AfterBore:</b> About to Start in on the Booze");
 
-		if (have_skill($skill[Ode to Booze]) )	use_skill( 1 , $skill[ ode to booze] );
-		else 
-		{
-			print("purchasing Ode to Booze from a buffbot...", "blue");
-			cli_execute("csend 1 meat to Testudinata");
-			int iterations = 0;
-			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
-			   wait(30);
-			   refresh_status();
-			   iterations = iterations + 1;
-			}	
-			if(have_effect($effect[Ode to Booze]) < 1){
-			   print("failed to get Ode to Booze", "red");
-			   }
-			  else print ("Ready to rock!", "green" );
-		}
+//		if (have_skill($skill[Ode to Booze]) )	use_skill( 1 , $skill[ ode to booze] );
+//		else 
+//		{
+//			print("purchasing Ode to Booze from a buffbot...", "blue");
+//			cli_execute("csend 1 meat to Testudinata");
+//			int iterations = 0;
+//			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
+//			   wait(30);
+//			   refresh_status();
+//			   iterations = iterations + 1;
+//			}	
+//			if(have_effect($effect[Ode to Booze]) < 1){
+//			   print("failed to get Ode to Booze", "red");
+//			   }
+//			  else print ("Ready to rock!", "green" );
+//		}
+
+		get_ode();
 		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
 		drink(amount, BORE_DRINK);
-
+		
 		int fillup = floor(inebriety_limit() - my_inebriety());
 		drink(fillup, BORE_DRINK_FILLER);
 	}
@@ -295,13 +322,14 @@ void summary()
 
 void rollover()
 	{
-		print("AfterBore:</b> Setting up your rollover");
-
-		use_skill( 1 , $skill[ ode to booze] );
-		drink (1, BORE_DRINK);
+		print("AfterBore:Setting up your rollover");
+		if (get_property("boreDrink")== true)
+			drink (1, BORE_DRINK);
+		else
+		// if we're not on bore booze, let eatdrink overdrink us
+		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
 		maximize ("pvp fights", false );
 		chat_clan("/whitelist " + get_property("boreRolloverClan"));
-
 	}
 
 
