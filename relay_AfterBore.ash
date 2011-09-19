@@ -122,7 +122,7 @@ void main() {
 
 		writeln("<tr><td>Drink to Drink</td>");
 		writeln("<td>");
-		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daquiri, Around the World]) );
+		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daiquiri, Around the World]) );
 		writeln("</td></tr>");
 
 
