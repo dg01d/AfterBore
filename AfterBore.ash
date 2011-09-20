@@ -250,17 +250,21 @@ void shoretrip()
 		print_html("<b>AfterBore:</b> About to have some Vacations");
 		print(BORE_VAC + " Vacations!");
 		maximize ("mp regen max", false );//let's get some MP out of this
+	/*	
+
+		This is the method which SHOULD work, but doesn't
+		KOLMAFIA returns: Bad location value: "VAC_LOC" (AfterBore.ash, line 260)
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
-			adventure ( 1 , $location[VAC_LOC] );
+			adventure ( 1 , ($location[VAC_LOC]) );
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
-
+	*/
 		
-/*		if vars["boreShore_Stat"] == "Moxie"
+		if (BORE_VAC == "Moxie")
 		{
-		print("Moxie Vacation");
+	//	print("Moxie Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -268,9 +272,9 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-		if (vars["boreShore_Stat"]) == "Muscle")
+		if (BORE_VAC == "Muscle")
 		{
-		print("Muscle Vacation");
+	//	print("Muscle Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -278,9 +282,9 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-		if (vars["boreShore_Stat"]) == "Mysticality")
+		if (BORE_VAC == "Mysticality")
 		{
-		print("Myst Vacation");
+	//	print("Myst Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -288,7 +292,7 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-*/
+
 	}
 
 
@@ -358,9 +362,9 @@ void run()
 		if (vars["boreDiet"]== true) diet();
 //		if (get_property("boreSpleen")== true) spleen();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
-		if ((vars["boreClod"]== true) clod();
-		if ((vars["boreShore"]== true) shoretrip();
-		if ((vars["boreDonate"]== true) donate();
+		if (vars["boreClod"]== true) clod();
+		if (vars["boreShore"]== true) shoretrip();
+		if (vars["boreDonate"]== true) donate();
 		summary();
 	//test for adventures lost to rollover and shout if case
 	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && vars["boreRollover"] == true ) 
