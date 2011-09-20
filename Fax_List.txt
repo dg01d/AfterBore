@@ -1,0 +1,126 @@
+1000 ML Butt	bigbutt
+7-Foot Dwarf	miner
+Alphabet Giant	alphabet
+Ambulatory Pirate	ambulatory_pirate
+Angels of Avalon	avalon
+Antique Database Server	database_server
+Astronomer	astronomer
+Bailey's Beetle	baileys
+Baseball Bat	baseball
+Batwinged Gremlin	batwinged
+"Big Creepy Spider"	spider
+Black-and-White-Ops Penguin	ops_penguin
+Black Widow	black_widow
+Blooper	blooper
+Blur	blur
+Bob Racecar	bob
+Bolt-Cuttin' Elf	bolt_elf 
+Booze Giant	booze
+Brainsweeper	brainsweeper
+Bronzed Locust	locust
+C. H. U. M. Chieftain	chieftain
+Cement Cobbler Penguin	cement_penguin
+Claw-foot Bathtub	bathtub
+Cleanly Pirate	cleanly
+Clod Hopper	clodhopper
+Creamy Pirate	creamy
+Curmudgeonly Pirate	curmudgeonly
+Cursed Pirate	cursed
+Dairy Goat	dairy_goat
+Demonic Icebox	icebox
+Dirty Hippy Jewelry Maker	prewar_hippy
+Dirty Thieving Brigand	brigand
+Disease-In-The-Box	disease
+Elite Beer Bongadier	beer_bongadier
+Erudite Gremlin	erudite
+Evil Spaghetti Cult Middle-Manager	manager
+Five Skeleton Invaders	skeleton_invaders
+Fruit Golem	fruit_golem
+Furry Giant	furry
+Gang of Hobo Muggers	muggers
+Gaudy Pirate	gaudy
+Ghost	ghost
+Gnollish Crossdresser	crossdresser
+Gnollish Gearhead	gearhead
+Gnollish Tirejuggler	tirejuggler
+Goth Giant	goth
+Grungy Pirate	grungy
+Handsome Mariachi	handsomeness
+Harem Girl	harem_girl
+Hellion	hellion
+Hellseal Pup	hellpup
+Hobelf (CRIMBCO WC)	bathroom_elf
+Hobelf (Elf Alley)	hobo_elf
+Hung-over half-orc hobo	half_orc
+Hustled Spectre	hustled_spectre
+Irate Mariachi	irate
+Jilted Mistress	jilted
+Knight (snake)	knight
+Knight in White Satin	white_knight
+Knob Goblin Elite Guard Captain	kge
+Knob Goblin Embezzler	embezzler
+Knob Goblin Master Chef	master_chef
+Large Kobold	kobold
+Lemon-in-the-Box	lemonbox
+Lobsterfrogman	lobsterfrogman
+MagiMechTech MechaMech	mech
+Mariachi Calavera	calavera
+Me4t BegZ0rr	begzor
+Mer-Kin Raider	merkin
+Mesmerizing Penguin	mesmerizing
+Mob Penguin Demolitionist	demolitionist
+Modern Zmobie	modern_zmobie
+Monkey Wrenchin' Elf	monkey_elf 
+Mr. Skullhead's Butt	skullhead
+Neptune Flytrap	neptune_flytrap
+Ninja Snowman Janitor	janitor
+Orcish Frat Boy Spy	frat_spy
+Peeved Roommate	hipster
+Propaganda-spewin' Elf	prop_elf
+Protagonist	protagonist
+Pygmy Assault Squad	pygmy_assault
+Pygmy Blowgunner	blowgunner
+Quantum Mechanic	mechanic
+Quiet Healer	healer
+Rampaging Adding Machine	adding_machine
+Raver Giant	raver
+Reanimated Baboon Skeleton	reanim_baboon
+Reanimated Bat Skeleton	reanim_bat
+Reanimated Demon Skeleton	reanim_demon
+Reanimated Giant Spider Skeleton	reanim_spider
+Reanimated Serpent Skeleton	reanim_serpent
+Reanimated Wyrm Skeleton	reanim_wyrm
+Riff's Butt	riff
+Rockfish	rockfish
+Rotund Duck	rotund
+Screambat	screambat
+Shaky Clown	shaky
+Skeletal Sommelier	wine
+Skinflute	skinflute
+Skullbat	skullbat
+Sleepy Mariachi	sleepy_mariachi
+Slime	slime
+Smarmy Pirate	smarmy
+Some Bad ASCII Art	ascii
+Spam Witch	spam_witch
+Spider Gremlin	spider_gremlin
+Sub-Assistant Knob Mad Scientist	firecracker
+Swarm of Scarab Beatles	beatles
+Toilet-Papered Tree	tp_tree
+Tomb Rat	tomb_rat
+Tomb Servant	tomb_servant
+Triffid	triffid
+Undercover Penguin	undercover_penguin
+Unemployed Knob Goblin	beer_lens
+Unholy Diver	unholy_diver
+Vegetable Gremlin	vegetable
+W Imp	wimp
+War Frat Mobile Grill Unit	grill_unit
+War Hippy Elite Fire Spinner	fire_spinner
+War Hippy Spy	war_hippy_spy
+White Lion	white_lion
+White Snake	white_snake
+Writing Desk	writing_desk
+XXX pr0n	pron
+Zombie Waltzers	waltzers
+.	.

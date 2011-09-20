@@ -6,7 +6,7 @@ notify "ShaBob";
 import <htmlform.ash> 
 import <consumption.ash>
 import <zlib.ash>
-string thisver = "0.9.3";		// This is the script's version!
+string thisver = "0.9.5";		// This is the script's version!
 
 
 // Thanks to those whose work has been absorbed to make this: 
