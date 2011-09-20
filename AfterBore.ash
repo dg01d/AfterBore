@@ -174,16 +174,16 @@ void drink()
 void diet() // This section is clearly in need of significant work.
 	{   
 		print_html("<b>AfterBore:</b> Eating Time!");
-
-		while ( my_fullness() < fullness_limit() )
+		int temp_full = 0;
+		while ( my_fullness() < fullness_limit() && temp_full != my_fullness() )
 		{
 			if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
 			{
 				use (1, $item[milk of magnesium]);
 			}
+			temp_full = my_fullness();
 			eat (1, BORE_FOOD);
 		}
-		
 	}
 // Spleens the, you get the picture
 void spleen()
@@ -191,7 +191,6 @@ void spleen()
 		use (3, BORE_SPLEEN);
 		use (1, $item[mojo filter]);
 		use (1, BORE_SPLEEN);
-
 	}
 
 // Fights Monster as selected by the user. 
@@ -199,7 +198,7 @@ void spleen()
 void clod()
 	{
 		print_html("<b>AfterBore:</b> Fighting your Selected Monster.");
-
+		if ( get_property ( "_photocopyUsed" ) == true ) return;
 		if( !is_online( "faxbot" ) ) abort( "Faxbot is dead!" );
 		while ( get_property( "photocopyMonster" ) != BORE_MOB )
 		{
@@ -225,7 +224,6 @@ void clod()
 		{
 			use ( 1, $item[spooky putty monster]);
 		}
-
 	}
 
 // Takes Shoretrips towards the Boat Trophies.
@@ -235,9 +233,7 @@ void shoretrip()
 	{
 		print_html("<b>AfterBore:</b> About to have some Vacations");
 		print(get_property("boreShore_Stat"));
-
 		maximize ("mp regen max", false );//let's get some MP out of this
-
 		if (get_property("boreShore_Stat") == "Moxie")
 		{
 		print("Moxie Vacation");
@@ -248,8 +244,6 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-		
-
 		if (get_property("boreShore_Stat") == "Muscle")
 		{
 		print("Muscle Vacation");
@@ -260,7 +254,6 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-
 		if (get_property("boreShore_Stat") == "Mysticality")
 		{
 		print("Myst Vacation");
@@ -301,7 +294,6 @@ void donate()
 		            max_donation -= donation;
 		        }
 		        // the donation failed, you have probably donated the limit for the day
-
 		}
 	}
 
@@ -310,14 +302,12 @@ void donate()
 void summary()
 	{
 		print("AfterBore:</b> Summary");
-
 		print ("Total black puddings fought " + get_property( "blackPuddingsDefeated" ), "green");
 		print ("Total shore trips " + get_property( "boreShoretrips" ), "green");
 		print ("Total 4-D cameras used " + get_property ( "camerasUsed" ), "green");
 		print ("Donated to Boris " + get_property( "heroDonationBoris" ), "green");
 		print ("Donated to Jarlsberg " + get_property( "heroDonationJarlsberg" ), "green");
 		print ("Donated to Sneaky Pete " + get_property( "heroDonationSneakyPete" ), "green");
-
 	}
 
 //Does Rollovers - This presently appears to be broken :(
@@ -338,27 +328,25 @@ void rollover()
 //Ties it all together
 void run()
 {
-	if (my_inebriety() < inebriety_limit())
-	
-	{
 		if (get_property("borePvp")== true) pvp();
 		if (get_property("boreDrink")== true) drink();
 		if (get_property("boreDiet")== true) diet();
 		if (get_property("boreSpleen")== true) spleen();
+		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
 		if (get_property("boreClod")== true) clod();
 		if (get_property("boreShore")== true) shoretrip();
 		if (get_property("boreDonate")== true) donate();
 		summary();
-	
-	}
-	if (my_inebriety() == inebriety_limit()) // A single if-if should not need to be nested, but it didn't work.
-	{
-		if   ( get_property("boreRollover")== true)
-		{
+	//test for adventures lost to rollover and shout if case
+	if ( my_adventures < 130 && my_inebriety() == inebriety_limit() && get_property ("boreRollover") == true ) 
+//	{
+//		if   ( get_property("boreRollover")== true)
+//		{
 			rollover();
-		}
-	}
-	
+//		}
+//	}
+else
+print ( "Ouch, you may lose adventures to rollover", "red" );
 }
 
 void main()
