@@ -340,7 +340,7 @@ void run()
 		if (get_property("boreDonate")== true) donate();
 		summary();
 	//test for adventures lost to rollover and shout if case
-	if ( my_adventures < 130 && my_inebriety() == inebriety_limit() && get_property ("boreRollover") == true ) 
+	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && get_property ("boreRollover") == true ) 
 //	{
 //		if   ( get_property("boreRollover")== true)
 //		{
