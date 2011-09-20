@@ -164,7 +164,7 @@ void main() {
 		vars["boreClod"] = write_check(vars["boreClod"].to_boolean(), "afterbore fight setting", "");
 		writeln("</td></tr>");
 
-		writeln("<tr><td>Monster to fight - <b>Use Faxbot Name!</b></td>");
+		writeln("<tr><td>Monster to fight</b></td>");
 		writeln("<td>");
 		attr("size='24'");
 //		set_property("boreMonster", write_field(get_property("boreMonster"), "Monster Name", ""));
