@@ -49,8 +49,8 @@ boolean safe_cli_execute( string cmd )
 
 item BORE_FOOD = get_property("boreDiet_Food").to_item();
 item BORE_DRINK = get_property("boreDiet_Drink").to_item();
-item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
-item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
+//item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
+//item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
 string BORE_MOB = get_property("boreMonster").to_monster();
 string BORE_FAX = get_property("boreMonster");
 
@@ -164,8 +164,8 @@ void drink()
 		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
 		drink(amount, BORE_DRINK);
 		
-		int fillup = floor(inebriety_limit() - my_inebriety());
-		drink(fillup, BORE_DRINK_FILLER);
+//		int fillup = floor(inebriety_limit() - my_inebriety());
+//		drink(fillup, BORE_DRINK_FILLER);
 	}
 
 
@@ -185,13 +185,15 @@ void diet() // This section is clearly in need of significant work.
 			eat (1, BORE_FOOD);
 		}
 	}
+
 // Spleens the, you get the picture
-void spleen()
+/*void spleen()
 	{
 		use (3, BORE_SPLEEN);
 		use (1, $item[mojo filter]);
 		use (1, BORE_SPLEEN);
 	}
+*/
 
 // Fights Monster as selected by the user. 
 // The Script maximizes itemdrops, and can become somewhat expensive :)
@@ -270,7 +272,7 @@ void shoretrip()
 // Donates
 void donate()
 	{
-		print("<b>AfterBore:</b> Donating to Heroes - So You Don't Have To!");
+		print_html("<b>AfterBore:</b> Donating to Heroes - So You Don't Have To!");
 		
 		    int donation;
 		    int max_donation = my_level() * 10000;
@@ -301,7 +303,7 @@ void donate()
 
 void summary()
 	{
-		print("AfterBore:</b> Summary");
+		print_html("<b>AfterBore:</b> Summary");
 		print ("Total black puddings fought " + get_property( "blackPuddingsDefeated" ), "green");
 		print ("Total shore trips " + get_property( "boreShoretrips" ), "green");
 		print ("Total 4-D cameras used " + get_property ( "camerasUsed" ), "green");
@@ -310,11 +312,11 @@ void summary()
 		print ("Donated to Sneaky Pete " + get_property( "heroDonationSneakyPete" ), "green");
 	}
 
-//Does Rollovers - This presently appears to be broken :(
+//Does Rollovers 
 
 void rollover()
 	{
-		print("AfterBore:Setting up your rollover");
+		print_html("<b>AfterBore:</b> Setting up your rollover");
 		if (get_property("boreDrink")== true)
 			drink (1, BORE_DRINK);
 		else
@@ -331,7 +333,7 @@ void run()
 		if (get_property("borePvp")== true) pvp();
 		if (get_property("boreDrink")== true) drink();
 		if (get_property("boreDiet")== true) diet();
-		if (get_property("boreSpleen")== true) spleen();
+//		if (get_property("boreSpleen")== true) spleen();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
 		if (get_property("boreClod")== true) clod();
 		if (get_property("boreShore")== true) shoretrip();

@@ -73,12 +73,12 @@ void main() {
 		writeln("<td>");
 		writeln("" +food_consumed[$item[lucky surprise egg]] + "/5");
 		writeln("</tr></td>");
-*/
+
 		writeln("<tr><td align=\"right\">Black Pudding</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[black pudding]] + "/500");
 		writeln("</tr></td>");
-
+*/
 		writeln("<tr><td align=\"right\">White Citadel Burger</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[White Citadel Burger]] + "/60");
@@ -88,6 +88,12 @@ void main() {
 		writeln("<td>");
 		writeln("" +food_consumed[$item[White Citadel Fries]] + "/10");
 		writeln("</tr></td>");
+
+		writeln("<tr><td align=\"right\">Black Puddings Defeated</td>");
+		writeln("<td>");
+		writeln("" +get_property("blackPuddingsDefeated") + "/240");
+		writeln("</tr></td>");
+
 
 		writeln("<tr><td>Special Food to Eat</td>");
 		writeln("<td>");
@@ -116,7 +122,7 @@ void main() {
 
 		writeln("<tr><td align=\"right\">Tomato Daiquiri</td>");
 		writeln("<td>");
-		writeln("" +booze_consumed[$item[tomato daiquiri]] + "/30");
+		writeln("" +booze_consumed[$item[tomato daiquiri]] + "/5");
 		writeln("</tr></td>");
 
 
@@ -125,15 +131,15 @@ void main() {
 		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daiquiri, Around the World]) );
 		writeln("</td></tr>");
 
-
+/*
 		writeln("<tr><td>Select Filer Drink (all 1 drunk)</td>");
 		writeln("<td>");
 		set_property( "boreDiet_Drink_Filler", write_choice(get_property("boreDiet_Drink_Filler"), "boreDiet_Drink_Filler", "", $strings[pumpkin beer, distilled fortified wine, thermos full of Knob coffee, Moonthril Schnapps, cup of primitive beer, can of Swiller, McMillicancuddy's Special Lager, melted Jell-o shot, thistle wine, cruelty-free wine, elven cellocello, herringcello, slimy fermented bile bladder, Cobb's Knob Wurstbrau, shot of blackberry schnapps, cream stout, Russian Ice, shot of rotgut, booze-soaked cherry, gin-soaked blotter paper, fine wine, shot of flower schnapps, shot of grapefruit schnapps, shot of orange schnapps, shot of tomato schnapps, Ram's Face Lager, ice-cold Sir Schlitz, ice-cold Willer, Imp Ale, plastic cup of beer]) );
 		writeln("</td></tr>");
+*/
 
 
-
-
+/*
 		writeln("<tr><td>Use particular Spleen Item in AfterBore?</td>");
 		writeln("<td>");
 		set_property("boreSpleen", write_check(get_property("boreSpleen").to_boolean(), 
@@ -145,7 +151,7 @@ void main() {
 		writeln("<td>");
 		set_property( "boreDiet_Spleen", write_choice(get_property("boreDiet_Spleen"), "boreDiet_Spleen", "", $strings[Agua de Vida, Roc Feather, Coffee Pixie Sticks, Beastly paste, Bug paste, Cloryphyll paste, Cosmic paste, Crimbo paste, Demonic paste, Ectoplasmic paste, Elemental paste, Fishy paste, Goblin paste, Gooey paste, Greasy paste, Hippy paste, Hobo paste, Indescribably Horrible paste, Mer-Kin paste, Oily paste, Orc paste, Penguin paste, Pirate paste, Slimy paste, Strange paste ]) );
 		writeln("</td></tr>");
-
+*/
 
 
 // Clodhoppering
