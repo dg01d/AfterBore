@@ -44,15 +44,28 @@ boolean safe_cli_execute( string cmd )
 	}
 
 
+
+// A Map. Just one for now :)
+
+
+
+string [string] fax_names;
+	file_to_map( "Fax_List.txt", fax_names );
+
+
 // Some Settings & Variables to make Script Cleaner
-
-
-item BORE_FOOD = get_property("boreDiet_Food").to_item();
-item BORE_DRINK = get_property("boreDiet_Drink").to_item();
+item BORE_FOOD = vars["boreDiet_Food"].to_item();
+item BORE_DRINK = vars["boreDiet_Drink"].to_item();
 //item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
 //item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
-string BORE_MOB = get_property("boreMonster").to_monster();
-string BORE_FAX = get_property("boreMonster");
+string BORE_MOB = vars["boreMonster"].to_monster();
+string BORE_FAX = fax_names[BORE_MOB];
+string BORE_4D = vars["boreClod_4dCCS"];
+string BORE_PUTTY = vars["boreClod_PuttyCCS"];
+string BORE_VAC = vars["boreShoreStat"];
+location VAC_LOC = (BORE_VAC+" vacation").to_location();
+
+//string BORE_FAX = get_property("boreMonster");
 
 // Donation Script from slyz
 
@@ -218,9 +231,10 @@ void clod()
 		{
 			use (1, potion);
 		}
-		cli_execute ( "ccs " + get_property("boreClod_4dCCS") ); //ccs to use 4-d camera
+
+		cli_execute ( "ccs " + BORE_4D ); //ccs to use 4-d camera
 		use ( 1, $item[photocopied monster]);
-		cli_execute ( "ccs " + get_property("boreClod_PuttyCCS") );//ccs to use putty
+		cli_execute ( "ccs " + BORE_PUTTY );//ccs to use putty
 		use ( 1, $item[Shaking 4-d camera]);
 		for j from 1 to 5
 		{
@@ -234,11 +248,23 @@ void clod()
 void shoretrip()
 	{
 		print_html("<b>AfterBore:</b> About to have some Vacations");
-		print(get_property("boreShore_Stat"));
+		print(BORE_VAC + " Vacations!");
 		maximize ("mp regen max", false );//let's get some MP out of this
-		if (get_property("boreShore_Stat") == "Moxie")
+	/*	
+
+		This is the method which SHOULD work, but doesn't
+		KOLMAFIA returns: Bad location value: "VAC_LOC" (AfterBore.ash, line 260)
+		for foo from 1 to (my_adventures() / 3)
+			{
+			print("Taking Trip No."+foo);
+			adventure ( 1 , ($location[VAC_LOC]) );
+			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
+			}
+	*/
+		
+		if (BORE_VAC == "Moxie")
 		{
-		print("Moxie Vacation");
+	//	print("Moxie Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -246,9 +272,9 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-		if (get_property("boreShore_Stat") == "Muscle")
+		if (BORE_VAC == "Muscle")
 		{
-		print("Muscle Vacation");
+	//	print("Muscle Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -256,9 +282,9 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-		if (get_property("boreShore_Stat") == "Mysticality")
+		if (BORE_VAC == "Mysticality")
 		{
-		print("Myst Vacation");
+	//	print("Myst Vacation");
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -266,6 +292,7 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
+
 	}
 
 
@@ -317,7 +344,7 @@ void summary()
 void rollover()
 	{
 		print_html("<b>AfterBore:</b> Setting up your rollover");
-		if (get_property("boreDrink")== true)
+		if (vars["boreDrink"] == true)
 			drink (1, BORE_DRINK);
 		else
 		// if we're not on bore booze, let eatdrink overdrink us
@@ -330,17 +357,17 @@ void rollover()
 //Ties it all together
 void run()
 {
-		if (get_property("borePvp")== true) pvp();
-		if (get_property("boreDrink")== true) drink();
-		if (get_property("boreDiet")== true) diet();
+		if (vars["borePvp"]== true) pvp();
+		if (vars["boreDrink"]== true) drink();
+		if (vars["boreDiet"]== true) diet();
 //		if (get_property("boreSpleen")== true) spleen();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
-		if (get_property("boreClod")== true) clod();
-		if (get_property("boreShore")== true) shoretrip();
-		if (get_property("boreDonate")== true) donate();
+		if (vars["boreClod"]== true) clod();
+		if (vars["boreShore"]== true) shoretrip();
+		if (vars["boreDonate"]== true) donate();
 		summary();
 	//test for adventures lost to rollover and shout if case
-	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && get_property ("boreRollover") == true ) 
+	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && vars["boreRollover"] == true ) 
 //	{
 //		if   ( get_property("boreRollover")== true)
 //		{

@@ -31,10 +31,10 @@ void main() {
 	writeln("<table>");
 // Pvp
 		writeln("<tr><td><b>PvP</b></td></tr>");
-		writeln("<tr><td>Collect Pretty Flowers in AFterBore?</td>");
+		writeln("<tr><td>Collect Pretty Flowers in AfterBore?</td>");
 		writeln("<td>");
-		set_property("borePvp", write_check(get_property("borePvp").to_boolean(), 
-		"borePvp", ""));
+//		set_property("borePvp", write_check(get_property("borePvp").to_boolean(), "borePvp", ""));
+		vars["borePvp"] = write_check(vars["borePvp"].to_boolean(), "afterbore pvp setting", "");
 		writeln("</td></tr>");
 
 
@@ -44,8 +44,8 @@ void main() {
 		writeln("<tr><td><b>Dieting</b></td></tr>");
 		writeln("<tr><td>Eat Special Foods for Trophy in AfterBore?</td>");
 		writeln("<td>");
-		set_property("boreDiet", write_check(get_property("boreDiet").to_boolean(), 
-		"boreDiet", ""));
+//		set_property("boreDiet", write_check(get_property("boreDiet").to_boolean(), "boreDiet", ""));
+		vars["boreDiet"] = write_check(vars["boreDiet"].to_boolean(), "afterbore diet setting", "");
 		writeln("</td></tr>");
 		writeln("<tr><td align=\"right\">Food Trophy Consumption To Date</td></tr>");
 
@@ -97,15 +97,16 @@ void main() {
 
 		writeln("<tr><td>Special Food to Eat</td>");
 		writeln("<td>");
-		set_property( "boreDiet_Food", write_choice(get_property("boreDiet_Food"), "boreDiet_Food", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries]) );
+//		set_property( "boreDiet_Food", write_choice(get_property("boreDiet_Food"), "boreDiet_Food", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries]) );
+		vars["boreDiet_Food"] = write_choice(vars["boreDiet_Food"], "afterbore diet food setting", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries] );
 		writeln("</td></tr>");
 
 
 
 		writeln("<tr><td>Drink Special Drink in AfterBore?</td>");
 		writeln("<td>");
-		set_property("boreDrink", write_check(get_property("boreDrink").to_boolean(), 
-	  "boreDrink", ""));
+//		set_property("boreDrink", write_check(get_property("boreDrink").to_boolean(), "boreDrink", ""));
+		vars["boreDrink"] = write_check(vars["boreDrink"].to_boolean(), "afterbore drink setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td align=\"right\">Booze Trophy Consumption To Date</td></tr>");
@@ -128,7 +129,8 @@ void main() {
 
 		writeln("<tr><td>Drink to Drink</td>");
 		writeln("<td>");
-		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daiquiri, Around the World]) );
+//		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daiquiri, Around the World]) );
+		vars["boreDiet_Drink"] = write_choice(vars["boreDiet_Drink"], "afterbore diet drink setting", "", $strings[White Canadian, Tomato Daiquiri, Around the World] );
 		writeln("</td></tr>");
 
 /*
@@ -158,27 +160,28 @@ void main() {
 		writeln("<tr><td><b>Fighting & Collecting</b></td></tr>");
 		writeln("<tr><td>Use Fax, 4d, Putty to Fight Monster in AfterBore?</td>");
 		writeln("<td>");
-		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), 
-	  "boreClod", ""));
+//		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), "boreClod", ""));
+		vars["boreClod"] = write_check(vars["boreClod"].to_boolean(), "afterbore fight setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td>Monster to fight - <b>Use Faxbot Name!</b></td>");
 		writeln("<td>");
 		attr("size='24'");
-		set_property("boreMonster", write_field(get_property("boreMonster"), "Monster Name", ""));
-
+//		set_property("boreMonster", write_field(get_property("boreMonster"), "Monster Name", ""));
+		vars["boreMonster"] = write_field(vars["boreMonster"], "afterbore monster name", "");
+		writeln("</td></tr>");
 		writeln("<tr><td>CCS to use for 4D Camera</td>");
-//		write_label("Camera CCS", "CCS to use for 4D Camera");
 		writeln("<td>");
 		attr("size='24'");
-		set_property("boreClod_4dCCS", write_field(get_property("boreClod_4dCCS"), "Camera CCS", ""));
-
+//		set_property("boreClod_4dCCS", write_field(get_property("boreClod_4dCCS"), "Camera CCS", ""));
+		vars["boreClod_4dCCS"] = write_field(vars["boreClod_4dCCS"], "afterbore 4d css name", "");
+		writeln("</td></tr>");
 		writeln("</td></tr>");
 		writeln("<tr><td>CCS to use for Spooky Putty</td>");
-//		write_label("Putty CCS", "CCS to use for Spooky Putty");
 		writeln("<td>");
 		attr("size='24'");
-		set_property("boreClod_PuttyCCS", write_field(get_property("boreClod_PuttyCCS"), "Putty CCS", ""));
+//		set_property("boreClod_PuttyCCS", write_field(get_property("boreClod_PuttyCCS"), "Putty CCS", ""));
+		vars["boreClod_PuttyCCS"] = write_field(vars["boreClod_PuttyCCS"], "afterbore Putty css name", "");
 		writeln("</td></tr>");
 
 
@@ -186,8 +189,8 @@ void main() {
 		writeln("<tr><td><b>Donating</b></td></tr>");
 		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
 		writeln("<td>");
-		set_property("boreDonate", write_check(get_property("boreDonate").to_boolean(), 
-		"boreDonate", ""));
+//		set_property("boreDonate", write_check(get_property("boreDonate").to_boolean(), "boreDonate", ""));
+		vars["boreDonate"] = write_check(vars["boreDonate"].to_boolean(), "afterbore donate setting", "");
 		writeln("</td></tr>");
 
 
@@ -196,37 +199,43 @@ void main() {
 		writeln("<tr><td><b>Tripping</b></td></tr>");
 		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
 		writeln("<td>");
-		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), 
-		"boreShore", ""));
+//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+		vars["boreShore"] = write_check(vars["boreShore"].to_boolean(), "afterbore shore setting", "");
 		writeln("</td></tr>");
-//		writeln("<tr><td>");
+
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
-		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong", ""));
+//		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong", ""));
+		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong");
 		writeln("</td></tr>");
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
-		set_property("boreShore_Stat", write_choice($stat[Muscle], "boreShore_Stat", "", $stats[]) );
+//		set_property("boreShore_Stat", write_choice($stat[Muscle], "boreShore_Stat", "", $stats[]) );
+		vars["boreShoreStat"] = write_choice($stat[Moxie], "afterbore stat setting", "", $stats[] );
+
 		writeln("</td></tr>");
 		
 // Rollover
 		writeln("<tr><td><b>Rollover</b></td></tr>");
 		writeln("<tr><td>Allow Afterbore.ash to manage your rollover?</td>");
 		writeln("<td>");
-		set_property("boreRollover", write_check(get_property("boreRollover").to_boolean(), 
-	  	"boreRollover", ""));
+//		set_property("boreRollover", write_check(get_property("boreRollover").to_boolean(), "boreRollover", ""));
+		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td>Clan to spend the night in</td>");
 		writeln("<td>");
 		write_label("Rollover Clan", "");
 		attr("size='24'");
-		set_property("boreRolloverClan", write_field(get_property("boreRolloverClan"), "Rollover Clan", ""));	
+//		set_property("boreRolloverClan", write_field(get_property("boreRolloverClan"), "Rollover Clan", ""));	
+		vars["boreRolloverClan"] = write_field(vars["boreRolloverClan"], "afterbore rollover clan name", "");
 		writeln("</td></tr>");
 		writeln("</table>");
 
 	finish_box();
-	write_button("", "Save changes");
+//	write_button("", "Save changes");
+	if(write_button("save", "Save"))
+		updatevars();
 
     	finish_page(); 
 }  
