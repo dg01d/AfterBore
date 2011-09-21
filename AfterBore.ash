@@ -65,6 +65,10 @@ string BORE_PUTTY = vars["boreClod_PuttyCCS"];
 string BORE_VAC = vars["boreShoreStat"];
 location VAC_LOC = (BORE_VAC+" vacation").to_location();
 string BORE_MAX = vars["boreRolloverPref"];
+string BORE_BFARM = vars["boreBlackFarm"];
+string BORE_BFARM_CCS = vars["boreBlackFarm_CSS"];
+string BORE_USERC = vars["boreUserChoice"];
+string BORE_USERS = vars["boreUser_Script"];
 
 //string BORE_FAX = get_property("boreMonster");
 
@@ -194,20 +198,23 @@ void drink()
 
 // Eats the User Selected Food
 void diet() // This section is clearly in need of significant work.
-	{   
-	/* Revert to older Eat Routine		
-		print_html("<b>AfterBore:</b> Eating Time!");
-		int temp_full = 0;
-		while ( my_fullness() < fullness_limit() && temp_full != my_fullness() )
+{   
+	
+   
+	print_html("<b>AfterBore:</b> Eating Time!");
+	int full_per_unit = 2;
+	if ( BORE_FOOD == $item[black pudding] )
+		full_per_unit = 3;
+	while ( (my_fullness() + full_per_unit ) <= fullness_limit() )
+	{
+		if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
 		{
-			if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
-			{
-				use (1, $item[milk of magnesium]);
-			}
-			temp_full = my_fullness();
-			eat (1, BORE_FOOD);
+			use (1, $item[milk of magnesium]);
 		}
-	*/
+         eat (1, BORE_FOOD);
+      }
+}
+	/*
 		print_html("<b>AfterBore:</b> Eating Time!");
 
 		while ( my_fullness() < fullness_limit() )
@@ -220,6 +227,7 @@ void diet() // This section is clearly in need of significant work.
 		}
 
 	}
+*/
 
 // Spleens the, you get the picture
 /*void spleen()
@@ -318,6 +326,25 @@ void shoretrip()
 
 	}
 
+// Black Forest Farming
+void bfarm()
+{
+		print_html("<b>AfterBore:</b> Farming in the Black Forest - So You Don't Have To!");
+		maximize ("items", false );
+		foreach potion in $items[knob goblin eyedrops, buffing spray]
+		{
+			use (1, potion);
+		}
+		cli_execute ( "ccs " + BORE_BFARM_CCS ); //ccs to use 4-d camera
+		// leaves 5 adventures for any crafting which may need to be done at the end of the day
+		adventure ( (my_adventures()-5) , $location[black forest] );
+
+}
+
+void userscript()
+{
+		cli_execute ( BORE_USERS );
+}
 
 // Donates
 void donate()
@@ -363,7 +390,7 @@ void summary()
 	}
 
 //Does Rollovers 
-
+void rollover()
 	{
 		print_html("<b>AfterBore:</b> Setting up your rollover");
 		if ( my_inebriety() == inebriety_limit() ) 
@@ -387,23 +414,21 @@ void run()
 		if (vars["borePvp"]== true) pvp();
 		if (vars["boreDrink"]== true) drink();
 		if (vars["boreDiet"]== true) diet();
-//		if (get_property("boreSpleen")== true) spleen();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
 		if (vars["boreClod"]== true) clod();
 		if (vars["boreShore"]== true) shoretrip();
+		if (vars["boreBlackFarm"] == true) bfarm();
+		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
 		summary();
 	}
 	//test for adventures lost to rollover and shout if case
-	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && vars["boreRollover"] == true ) 
-//	{
-//		if   ( get_property("boreRollover")== true)
-//		{
+	// my_adventures() < 130 &&
+	if ( my_adventures() < 130 && vars["boreRollover"] == true ) 
 			rollover();
-//		}
-//	}
-else
-print ( "Ouch, you may lose adventures to rollover", "red" );
+
+	else
+	print ( "Ouch, you may lose adventures to rollover", "red" );
 }
 
 void main()

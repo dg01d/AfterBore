@@ -214,6 +214,39 @@ void main() {
 		vars["boreShoreStat"] = write_choice($stat[Moxie], "afterbore stat setting", "", $stats[] );
 
 		writeln("</td></tr>");
+
+// Black Forest Hunting
+
+		writeln("<tr><td><b>Forest Fighting</b></td></tr>");
+		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
+		writeln("<td>");
+//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+		vars["boreBlackFarm"] = write_check(vars["boreBlackFarm"].to_boolean(), "afterbore black farm setting", "");
+		writeln("</td></tr>");
+
+		writeln("<tr><td>CSS to use for Black Forest Farming</td>");
+		writeln("<td>");
+		attr("size='24'");
+		vars["boreBlackFarm_CSS"] = write_field(vars["boreBlackFarm_CSS"], "afterbore black forest ccs", "");
+		writeln("</td></tr>");
+
+
+
+// Users own Script
+
+		writeln("<tr><td><b>UserScript</b></td></tr>");
+		writeln("<tr><td>Do your own thing in AfterBore?</td>");
+		writeln("<td>");
+//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+		vars["boreUserChoice"] = write_check(vars["boreUserChoice"].to_boolean(), "afterbore user choice setting", "");
+		writeln("</td></tr>");
+
+		writeln("<tr><td>Script to use for own adventuring</td>");
+		writeln("<td>");
+		attr("size='24'");
+		vars["boreUser_Script"] = write_field(vars["boreUser_Script"], "afterbore user script", "");
+		writeln("</td></tr>");
+
 		
 // Rollover
 		writeln("<tr><td><b>Rollover</b></td></tr>");
