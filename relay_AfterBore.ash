@@ -223,6 +223,12 @@ void main() {
 		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
 
+		writeln("<tr><td>What to Boost for Rollover</td>");
+		writeln("<td>");
+//		set_property("boreShore_Stat", write_choice($stat[Muscle], "boreShore_Stat", "", $stats[]) );
+		vars["boreRolloverPref"] = write_choice(vars["boreRolloverPref"], "afterbore roll setting", "", $strings[Adventures, PvP Fights] );
+		writeln("</td></tr>");
+
 		writeln("<tr><td>Clan to spend the night in</td>");
 		writeln("<td>");
 		write_label("Rollover Clan", "");

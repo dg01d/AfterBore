@@ -64,6 +64,7 @@ string BORE_4D = vars["boreClod_4dCCS"];
 string BORE_PUTTY = vars["boreClod_PuttyCCS"];
 string BORE_VAC = vars["boreShoreStat"];
 location VAC_LOC = (BORE_VAC+" vacation").to_location();
+string BORE_MAX = vars["boreRolloverPref"];
 
 //string BORE_FAX = get_property("boreMonster");
 
@@ -363,22 +364,26 @@ void summary()
 
 //Does Rollovers 
 
-void rollover()
 	{
 		print_html("<b>AfterBore:</b> Setting up your rollover");
-		if (vars["boreDrink"] == true)
-			drink (1, BORE_DRINK);
-		else
-		// if we're not on bore booze, let eatdrink overdrink us
-		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
-		maximize ("pvp fights", false );
-		chat_clan("/whitelist " + get_property("boreRolloverClan"));
+		if ( my_inebriety() == inebriety_limit() ) 
+		{
+			if (vars["boreDrink"] == true)
+				drink (1, BORE_DRINK);
+			else
+			// if we're not on bore booze, let eatdrink overdrink us
+			eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
+		}
+		maximize (BORE_MAX, false );
+		chat_clan("/whitelist " + vars["boreRolloverClan"]);
 	}
 
 
 //Ties it all together
 void run()
 {
+	if ( my_inebriety() < inebriety_limit() ) 	
+	{
 		if (vars["borePvp"]== true) pvp();
 		if (vars["boreDrink"]== true) drink();
 		if (vars["boreDiet"]== true) diet();
@@ -388,6 +393,7 @@ void run()
 		if (vars["boreShore"]== true) shoretrip();
 		if (vars["boreDonate"]== true) donate();
 		summary();
+	}
 	//test for adventures lost to rollover and shout if case
 	if ( my_adventures() < 130 && my_inebriety() == inebriety_limit() && vars["boreRollover"] == true ) 
 //	{
