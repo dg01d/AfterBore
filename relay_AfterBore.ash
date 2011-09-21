@@ -33,7 +33,7 @@ void main() {
 		writeln("<tr><td><b>PvP</b></td></tr>");
 		writeln("<tr><td>Collect Pretty Flowers in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("borePvp", write_check(get_property("borePvp").to_boolean(), "borePvp", ""));
+
 		vars["borePvp"] = write_check(vars["borePvp"].to_boolean(), "afterbore pvp setting", "");
 		writeln("</td></tr>");
 
@@ -44,7 +44,7 @@ void main() {
 		writeln("<tr><td><b>Dieting</b></td></tr>");
 		writeln("<tr><td>Eat Special Foods for Trophy in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreDiet", write_check(get_property("boreDiet").to_boolean(), "boreDiet", ""));
+
 		vars["boreDiet"] = write_check(vars["boreDiet"].to_boolean(), "afterbore diet setting", "");
 		writeln("</td></tr>");
 		writeln("<tr><td align=\"right\">Food Trophy Consumption To Date</td></tr>");
@@ -73,12 +73,8 @@ void main() {
 		writeln("<td>");
 		writeln("" +food_consumed[$item[lucky surprise egg]] + "/5");
 		writeln("</tr></td>");
-
-		writeln("<tr><td align=\"right\">Black Pudding</td>");
-		writeln("<td>");
-		writeln("" +food_consumed[$item[black pudding]] + "/500");
-		writeln("</tr></td>");
 */
+
 		writeln("<tr><td align=\"right\">White Citadel Burger</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[White Citadel Burger]] + "/60");
@@ -97,7 +93,7 @@ void main() {
 
 		writeln("<tr><td>Special Food to Eat</td>");
 		writeln("<td>");
-//		set_property( "boreDiet_Food", write_choice(get_property("boreDiet_Food"), "boreDiet_Food", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries]) );
+
 		vars["boreDiet_Food"] = write_choice(vars["boreDiet_Food"], "afterbore diet food setting", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries] );
 		writeln("</td></tr>");
 
@@ -105,7 +101,7 @@ void main() {
 
 		writeln("<tr><td>Drink Special Drink in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreDrink", write_check(get_property("boreDrink").to_boolean(), "boreDrink", ""));
+
 		vars["boreDrink"] = write_check(vars["boreDrink"].to_boolean(), "afterbore drink setting", "");
 		writeln("</td></tr>");
 
@@ -129,12 +125,12 @@ void main() {
 
 		writeln("<tr><td>Drink to Drink</td>");
 		writeln("<td>");
-//		set_property( "boreDiet_Drink", write_choice(get_property("boreDiet_Drink"), "boreDiet_Drink", "", $strings[White Canadian, Tomato Daiquiri, Around the World]) );
+
 		vars["boreDiet_Drink"] = write_choice(vars["boreDiet_Drink"], "afterbore diet drink setting", "", $strings[White Canadian, Tomato Daiquiri, Around the World] );
 		writeln("</td></tr>");
 
 /*
-		writeln("<tr><td>Select Filer Drink (all 1 drunk)</td>");
+		writeln("<tr><td>Select Filler Drink (all 1 drunk)</td>");
 		writeln("<td>");
 		set_property( "boreDiet_Drink_Filler", write_choice(get_property("boreDiet_Drink_Filler"), "boreDiet_Drink_Filler", "", $strings[pumpkin beer, distilled fortified wine, thermos full of Knob coffee, Moonthril Schnapps, cup of primitive beer, can of Swiller, McMillicancuddy's Special Lager, melted Jell-o shot, thistle wine, cruelty-free wine, elven cellocello, herringcello, slimy fermented bile bladder, Cobb's Knob Wurstbrau, shot of blackberry schnapps, cream stout, Russian Ice, shot of rotgut, booze-soaked cherry, gin-soaked blotter paper, fine wine, shot of flower schnapps, shot of grapefruit schnapps, shot of orange schnapps, shot of tomato schnapps, Ram's Face Lager, ice-cold Sir Schlitz, ice-cold Willer, Imp Ale, plastic cup of beer]) );
 		writeln("</td></tr>");
@@ -160,27 +156,27 @@ void main() {
 		writeln("<tr><td><b>Fighting & Collecting</b></td></tr>");
 		writeln("<tr><td>Use Fax, 4d, Putty to Fight Monster in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreClod", write_check(get_property("boreClod").to_boolean(), "boreClod", ""));
+
 		vars["boreClod"] = write_check(vars["boreClod"].to_boolean(), "afterbore fight setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td>Monster to fight</b></td>");
 		writeln("<td>");
 		attr("size='24'");
-//		set_property("boreMonster", write_field(get_property("boreMonster"), "Monster Name", ""));
+
 		vars["boreMonster"] = write_field(vars["boreMonster"], "afterbore monster name", "");
 		writeln("</td></tr>");
 		writeln("<tr><td>CCS to use for 4D Camera</td>");
 		writeln("<td>");
 		attr("size='24'");
-//		set_property("boreClod_4dCCS", write_field(get_property("boreClod_4dCCS"), "Camera CCS", ""));
+
 		vars["boreClod_4dCCS"] = write_field(vars["boreClod_4dCCS"], "afterbore 4d css name", "");
 		writeln("</td></tr>");
 		writeln("</td></tr>");
 		writeln("<tr><td>CCS to use for Spooky Putty</td>");
 		writeln("<td>");
 		attr("size='24'");
-//		set_property("boreClod_PuttyCCS", write_field(get_property("boreClod_PuttyCCS"), "Putty CCS", ""));
+
 		vars["boreClod_PuttyCCS"] = write_field(vars["boreClod_PuttyCCS"], "afterbore Putty css name", "");
 		writeln("</td></tr>");
 
@@ -189,7 +185,7 @@ void main() {
 		writeln("<tr><td><b>Donating</b></td></tr>");
 		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreDonate", write_check(get_property("boreDonate").to_boolean(), "boreDonate", ""));
+
 		vars["boreDonate"] = write_check(vars["boreDonate"].to_boolean(), "afterbore donate setting", "");
 		writeln("</td></tr>");
 
@@ -199,18 +195,18 @@ void main() {
 		writeln("<tr><td><b>Tripping</b></td></tr>");
 		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+
 		vars["boreShore"] = write_check(vars["boreShore"].to_boolean(), "afterbore shore setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
-//		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong", ""));
+
 		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong");
 		writeln("</td></tr>");
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
-//		set_property("boreShore_Stat", write_choice($stat[Muscle], "boreShore_Stat", "", $stats[]) );
+
 		vars["boreShoreStat"] = write_choice($stat[Moxie], "afterbore stat setting", "", $stats[] );
 
 		writeln("</td></tr>");
@@ -220,7 +216,7 @@ void main() {
 		writeln("<tr><td><b>Forest Fighting</b></td></tr>");
 		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+
 		vars["boreBlackFarm"] = write_check(vars["boreBlackFarm"].to_boolean(), "afterbore black farm setting", "");
 		writeln("</td></tr>");
 
@@ -237,7 +233,7 @@ void main() {
 		writeln("<tr><td><b>UserScript</b></td></tr>");
 		writeln("<tr><td>Do your own thing in AfterBore?</td>");
 		writeln("<td>");
-//		set_property("boreShore", write_check(get_property("boreShore").to_boolean(), "boreShore", ""));
+
 		vars["boreUserChoice"] = write_check(vars["boreUserChoice"].to_boolean(), "afterbore user choice setting", "");
 		writeln("</td></tr>");
 
@@ -252,13 +248,13 @@ void main() {
 		writeln("<tr><td><b>Rollover</b></td></tr>");
 		writeln("<tr><td>Allow Afterbore.ash to manage your rollover?</td>");
 		writeln("<td>");
-//		set_property("boreRollover", write_check(get_property("boreRollover").to_boolean(), "boreRollover", ""));
+
 		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
 
 		writeln("<tr><td>What to Boost for Rollover</td>");
 		writeln("<td>");
-//		set_property("boreShore_Stat", write_choice($stat[Muscle], "boreShore_Stat", "", $stats[]) );
+
 		vars["boreRolloverPref"] = write_choice(vars["boreRolloverPref"], "afterbore roll setting", "", $strings[Adventures, PvP Fights] );
 		writeln("</td></tr>");
 
@@ -266,7 +262,7 @@ void main() {
 		writeln("<td>");
 		write_label("Rollover Clan", "");
 		attr("size='24'");
-//		set_property("boreRolloverClan", write_field(get_property("boreRolloverClan"), "Rollover Clan", ""));	
+
 		vars["boreRolloverClan"] = write_field(vars["boreRolloverClan"], "afterbore rollover clan name", "");
 		writeln("</td></tr>");
 		writeln("</table>");
