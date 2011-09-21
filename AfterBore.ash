@@ -50,7 +50,7 @@ boolean safe_cli_execute( string cmd )
 
 
 string [string] fax_names;
-	file_to_map( "Fax_List.txt", fax_names );
+	 load_current_map( "Fax_List", fax_names );
 
 
 // Some Settings & Variables to make Script Cleaner
@@ -379,6 +379,12 @@ void rollover()
 //Ties it all together
 void run()
 {
+
+	int have_4d = item_amount($item[4d Camera]);
+	if ((have_4d < 1) && (vars["boreClod"]== true))  abort("You have no 4D Cameras!");
+	int have_putty = item_amount($item[spooky putty sheet]);
+	if ((have_putty < 1) && (vars["boreClod"]== true)) abort("You have no Spooky Putty Sheet!");		
+
 	if ( my_inebriety() < inebriety_limit() ) 	
 	{
 		if (vars["borePvp"]== true) pvp();
@@ -398,8 +404,10 @@ void run()
 	if ( my_adventures() < 130 && vars["boreRollover"] == true ) 
 			rollover();
 
-	else
-	print ( "Ouch, you may lose adventures to rollover", "red" );
+	else{
+	print_html ("<b>Something is amiss. You appear ready for rollover, but not to have adventured today.</b>");
+	print_html ("<b>Perhaps there is something you would like to do with your "+ my_adventures() +" adventures?</b>");
+	}
 }
 
 void main()
