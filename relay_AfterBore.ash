@@ -6,8 +6,11 @@ notify "ShaBob";
 import <htmlform.ash> 
 import <consumption.ash>
 import <zlib.ash>
-string thisver = "0.9.5";		// This is the script's version!
 
+string thisver = "0.9.6";		// This is the script's version!
+int AfterBore_PAGE = 9999;
+ 
+// check_version("relay_AfterBore", "relay_AfterBore", thisver, AfterBore_PAGE);
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, Bale & Especially Panama Joe whose idea this is.
@@ -270,7 +273,11 @@ void main() {
 	finish_box();
 //	write_button("", "Save changes");
 	if(write_button("save", "Save"))
+	{
+		writeln("<font color='green'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Settings saved at "+ now_to_string("h:mm a, ss") +"s</font>");
 		updatevars();
+	}
 
-    	finish_page(); 
+
+	finish_page(); 
 }  

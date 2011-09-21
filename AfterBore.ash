@@ -6,10 +6,10 @@ import <zlib.ash>
 import <eatdrink.ash>
 //script "AfterBore.ash";
 
-string thisver = "0.9.5";		// This is the script's version!
-
+string thisver = "0.9.6";		// This is the script's version!
+int AfterBore_PAGE = 9999;
  
-// check_version("AfterBore", "AfterBore", thisver, 7015)
+// check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, slyz & Especially Panama Joe whose script this is.
@@ -70,7 +70,7 @@ string BORE_BFARM_CCS = vars["boreBlackFarm_CSS"];
 string BORE_USERC = vars["boreUserChoice"];
 string BORE_USERS = vars["boreUser_Script"];
 
-//string BORE_FAX = get_property("boreMonster");
+
 
 // Donation Script from slyz
 
@@ -161,22 +161,6 @@ void drink()
 	{
 		print_html("<b>AfterBore:</b> About to Start in on the Booze");
 
-//		if (have_skill($skill[Ode to Booze]) )	use_skill( 1 , $skill[ ode to booze] );
-//		else 
-//		{
-//			print("purchasing Ode to Booze from a buffbot...", "blue");
-//			cli_execute("csend 1 meat to Testudinata");
-//			int iterations = 0;
-//			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
-//			   wait(30);
-//			   refresh_status();
-//			   iterations = iterations + 1;
-//			}	
-//			if(have_effect($effect[Ode to Booze]) < 1){
-//			   print("failed to get Ode to Booze", "red");
-//			   }
-//			  else print ("Ready to rock!", "green" );
-//		}
 
 		if (BORE_DRINK == to_item("around the world"))
 		{
@@ -214,20 +198,6 @@ void diet() // This section is clearly in need of significant work.
          eat (1, BORE_FOOD);
       }
 }
-	/*
-		print_html("<b>AfterBore:</b> Eating Time!");
-
-		while ( my_fullness() < fullness_limit() )
-		{
-			if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
-			{
-				use (1, $item[milk of magnesium]);
-			}
-			eat (1, BORE_FOOD);
-		}
-
-	}
-*/
 
 // Spleens the, you get the picture
 /*void spleen()
@@ -294,7 +264,7 @@ void shoretrip()
 		
 		if (BORE_VAC == "Moxie")
 		{
-	//	print("Moxie Vacation");
+
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -304,7 +274,7 @@ void shoretrip()
 		}
 		if (BORE_VAC == "Muscle")
 		{
-	//	print("Muscle Vacation");
+
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -315,7 +285,7 @@ void shoretrip()
 		}
 		if (BORE_VAC == "Mysticality")
 		{
-	//	print("Myst Vacation");
+
 		for foo from 1 to (my_adventures() / 3)
 			{
 			print("Taking Trip No."+foo);
@@ -422,8 +392,9 @@ void run()
 		if (vars["boreDonate"]== true) donate();
 		summary();
 	}
+
 	//test for adventures lost to rollover and shout if case
-	// my_adventures() < 130 &&
+
 	if ( my_adventures() < 130 && vars["boreRollover"] == true ) 
 			rollover();
 
