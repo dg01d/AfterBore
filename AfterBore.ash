@@ -173,10 +173,18 @@ void drink()
 //			  else print ("Ready to rock!", "green" );
 //		}
 
+		if (BORE_DRINK == to_item("around the world"))
+		{
+		get_ode();
+		int amount = floor((inebriety_limit() - my_inebriety()) / 4);
+		drink(amount, BORE_DRINK);
+		}
+		else 
+		{
 		get_ode();
 		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
 		drink(amount, BORE_DRINK);
-		
+		}
 //		int fillup = floor(inebriety_limit() - my_inebriety());
 //		drink(fillup, BORE_DRINK_FILLER);
 	}
@@ -186,6 +194,7 @@ void drink()
 // Eats the User Selected Food
 void diet() // This section is clearly in need of significant work.
 	{   
+	/* Revert to older Eat Routine		
 		print_html("<b>AfterBore:</b> Eating Time!");
 		int temp_full = 0;
 		while ( my_fullness() < fullness_limit() && temp_full != my_fullness() )
@@ -197,6 +206,18 @@ void diet() // This section is clearly in need of significant work.
 			temp_full = my_fullness();
 			eat (1, BORE_FOOD);
 		}
+	*/
+		print_html("<b>AfterBore:</b> Eating Time!");
+
+		while ( my_fullness() < fullness_limit() )
+		{
+			if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
+			{
+				use (1, $item[milk of magnesium]);
+			}
+			eat (1, BORE_FOOD);
+		}
+
 	}
 
 // Spleens the, you get the picture
@@ -281,6 +302,7 @@ void shoretrip()
 			adventure ( 1 , $location[muscle vacation] );
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
+
 		}
 		if (BORE_VAC == "Mysticality")
 		{
