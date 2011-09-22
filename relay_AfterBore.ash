@@ -274,7 +274,7 @@ void main() {
 //	write_button("", "Save changes");
 	if(write_button("save", "Save"))
 	{
-		writeln("<font color='green'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Settings saved at "+ now_to_string("h:mm a, ss") +"s</font>");
+		writeln("<font color='green'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Settings saved at "+ now_to_string("d MMM yyyy HH:mm: Z") +"</font>");
 		updatevars();
 	}
 
