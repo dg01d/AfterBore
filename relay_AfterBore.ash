@@ -232,6 +232,12 @@ void main() {
 		vars["boreBlackFarm_CSS"] = write_field(vars["boreBlackFarm_CSS"], "afterbore black forest ccs", "");
 		writeln("</td></tr>");
 
+		writeln("<tr><td>Mood to use for Black Forest Farming</td>");
+		writeln("<td>");
+		attr("size='24'");
+		vars["boreBlackFarm_Mood"] = write_field(vars["boreBlackFarm_Mood"], "afterbore black forest mood", "");
+		writeln("</td></tr>");
+
 // Users own Script
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
 		writeln("<tr><td>Do your own thing in AfterBore?</td>");
@@ -256,6 +262,18 @@ void main() {
 		writeln("<td>");
 		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
+		writeln("<tr><td>What to Drink for Rollover</td>");
+		writeln("<td>");
+		vars["boreRolloverNightCap"] = write_choice(vars["boreRolloverNightCap"], "afterbore nightcap setting", "", $strings[TrophyBooze, EatDrink, UserSelect] );
+		writeln("</td></tr>");
+		writeln("<tr><td>NightCap Drink</td>");
+		writeln("<td>");
+		write_label("Rollover Drink", "");
+		attr("size='24'");
+		vars["boreRolloverDrink"] = write_field(vars["boreRolloverDrink"], "afterbore rollover nightcap name name", "");
+		writeln("</td></tr>");
+
+
 		writeln("<tr><td>What to Boost for Rollover</td>");
 		writeln("<td>");
 		vars["boreRolloverPref"] = write_choice(vars["boreRolloverPref"], "afterbore roll setting", "", $strings[Adventures, PvP Fights] );
