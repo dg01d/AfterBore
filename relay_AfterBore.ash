@@ -31,26 +31,32 @@ void main() {
 //	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, 7015));     
 	writeln("<br />");	
 	write_box("AfterBore Settings v"+ thisver);
-	writeln("<table>");
-// Pvp
-		writeln("<tr><td><b>PvP</b></td></tr>");
+
+// Collecting & Donating
+	write_box("<b>Collecting & Donating</b>");
+		writeln("<table>");
 		writeln("<tr><td>Collect Pretty Flowers in AfterBore?</td>");
 		writeln("<td>");
-
 		vars["borePvp"] = write_check(vars["borePvp"].to_boolean(), "afterbore pvp setting", "");
 		writeln("</td></tr>");
 
-
+		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
+		writeln("<td>");
+		vars["boreDonate"] = write_check(vars["boreDonate"].to_boolean(), "afterbore donate setting", "");
+		writeln("</td></tr>");
+		writeln("</table>");
+	finish_box();
 
 
 // Dieting
-		writeln("<tr><td><b>Dieting</b></td></tr>");
+	write_box("<b>Dieting</b>");
+		writeln("<table>");
 		writeln("<tr><td>Eat Special Foods for Trophy in AfterBore?</td>");
 		writeln("<td>");
 
 		vars["boreDiet"] = write_check(vars["boreDiet"].to_boolean(), "afterbore diet setting", "");
 		writeln("</td></tr>");
-		writeln("<tr><td align=\"right\">Food Trophy Consumption To Date</td></tr>");
+		writeln("<tr><td colspan='2' align='center'>Food Trophy Consumption To Date</td></tr>");
 
 /*		writeln("<tr><td>Spaghetti with Skullheads</td>");
 		writeln("<td>");
@@ -63,7 +69,7 @@ void main() {
 		writeln("" +food_consumed[$item[ghuol guolash]] + "/11");
 		writeln("</tr></td>");
 */
-		writeln("<tr><td align=\"right\">Herb Brownies</td>");
+		writeln("<tr><td align=\"right\">Herb Brownies&#58;</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[herb brownies]] + "/420");
 		writeln("</tr></td>");
@@ -78,17 +84,17 @@ void main() {
 		writeln("</tr></td>");
 */
 
-		writeln("<tr><td align=\"right\">White Citadel Burger</td>");
+		writeln("<tr><td align=\"right\">White Citadel Burger&#58;</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[White Citadel Burger]] + "/60");
 		writeln("</tr></td>");
 
-		writeln("<tr><td align=\"right\">White Citadel Fries</td>");
+		writeln("<tr><td align=\"right\">White Citadel Fries&#58;</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[White Citadel Fries]] + "/10");
 		writeln("</tr></td>");
 
-		writeln("<tr><td align=\"right\">Black Puddings Defeated</td>");
+		writeln("<tr><td align=\"right\">Black Puddings Defeated&#58;</td>");
 		writeln("<td>");
 		writeln("" +get_property("blackPuddingsDefeated") + "/240");
 		writeln("</tr></td>");
@@ -100,27 +106,25 @@ void main() {
 		vars["boreDiet_Food"] = write_choice(vars["boreDiet_Food"], "afterbore diet food setting", "", $strings[Black Pudding, Herb Brownies, White Citadel Burger, White Citadel Fries] );
 		writeln("</td></tr>");
 
-
-
 		writeln("<tr><td>Drink Special Drink in AfterBore?</td>");
 		writeln("<td>");
 
 		vars["boreDrink"] = write_check(vars["boreDrink"].to_boolean(), "afterbore drink setting", "");
 		writeln("</td></tr>");
 
-		writeln("<tr><td align=\"right\">Booze Trophy Consumption To Date</td></tr>");
+		writeln("<tr><td colspan='2' align='center'>Booze Trophy Consumption To Date</td></tr>");
 		
-		writeln("<tr><td align=\"right\">Around the World</td>");
+		writeln("<tr><td align=\"right\">Around the World&#58;</td>");
 		writeln("<td>");
 		writeln("" +booze_consumed[$item[Around the World]] + "/80");
 		writeln("</tr></td>");
 
-		writeln("<tr><td align=\"right\">White Canadian</td>");
+		writeln("<tr><td align=\"right\">White Canadian&#58;</td>");
 		writeln("<td>");
 		writeln("" +booze_consumed[$item[White Canadian]] + "/30");
 		writeln("</tr></td>");
 
-		writeln("<tr><td align=\"right\">Tomato Daiquiri</td>");
+		writeln("<tr><td align=\"right\">Tomato Daiquiri&#58;</td>");
 		writeln("<td>");
 		writeln("" +booze_consumed[$item[tomato daiquiri]] + "/5");
 		writeln("</tr></td>");
@@ -153,10 +157,13 @@ void main() {
 		set_property( "boreDiet_Spleen", write_choice(get_property("boreDiet_Spleen"), "boreDiet_Spleen", "", $strings[Agua de Vida, Roc Feather, Coffee Pixie Sticks, Beastly paste, Bug paste, Cloryphyll paste, Cosmic paste, Crimbo paste, Demonic paste, Ectoplasmic paste, Elemental paste, Fishy paste, Goblin paste, Gooey paste, Greasy paste, Hippy paste, Hobo paste, Indescribably Horrible paste, Mer-Kin paste, Oily paste, Orc paste, Penguin paste, Pirate paste, Slimy paste, Strange paste ]) );
 		writeln("</td></tr>");
 */
-
+		writeln("</table>");
+	finish_box();
 
 // Clodhoppering
-		writeln("<tr><td><b>Fighting & Collecting</b></td></tr>");
+	write_box("<b>Faxing</b>");
+		writeln("<table>");
+
 		writeln("<tr><td>Use Fax, 4d, Putty to Fight Monster in AfterBore?</td>");
 		writeln("<td>");
 
@@ -182,20 +189,15 @@ void main() {
 
 		vars["boreClod_PuttyCCS"] = write_field(vars["boreClod_PuttyCCS"], "afterbore Putty css name", "");
 		writeln("</td></tr>");
-
-
-// Donating
-		writeln("<tr><td><b>Donating</b></td></tr>");
-		writeln("<tr><td>Donate to the Hero Statues in AfterBore?</td>");
-		writeln("<td>");
-
-		vars["boreDonate"] = write_check(vars["boreDonate"].to_boolean(), "afterbore donate setting", "");
-		writeln("</td></tr>");
-
+		writeln("</table>");
+	finish_box();
 
 
 // Shoretrips
-		writeln("<tr><td><b>Tripping</b></td></tr>");
+
+	write_box("<b>What to Do? Tripping, Fighting or Scripting</b>");
+		writeln("<table>");
+		
 		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
 		writeln("<td>");
 
@@ -205,7 +207,8 @@ void main() {
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
 
-		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong");
+		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong <br />& Reset for each Ascension!");
+//		writeln(vars["boreShoretrips"]);
 		writeln("</td></tr>");
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
@@ -215,8 +218,8 @@ void main() {
 		writeln("</td></tr>");
 
 // Black Forest Hunting
-
-		writeln("<tr><td><b>Forest Fighting</b></td></tr>");
+		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
+		
 		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
 		writeln("<td>");
 
@@ -229,11 +232,8 @@ void main() {
 		vars["boreBlackFarm_CSS"] = write_field(vars["boreBlackFarm_CSS"], "afterbore black forest ccs", "");
 		writeln("</td></tr>");
 
-
-
 // Users own Script
-
-		writeln("<tr><td><b>UserScript</b></td></tr>");
+		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
 		writeln("<tr><td>Do your own thing in AfterBore?</td>");
 		writeln("<td>");
 
@@ -245,22 +245,21 @@ void main() {
 		attr("size='24'");
 		vars["boreUser_Script"] = write_field(vars["boreUser_Script"], "afterbore user script", "");
 		writeln("</td></tr>");
+		writeln("</table>");
+	finish_box();
 
 		
 // Rollover
-		writeln("<tr><td><b>Rollover</b></td></tr>");
+	write_box("<b>Rollover</b>");
+		writeln("<table>");
 		writeln("<tr><td>Allow Afterbore.ash to manage your rollover?</td>");
 		writeln("<td>");
-
 		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
-
 		writeln("<tr><td>What to Boost for Rollover</td>");
 		writeln("<td>");
-
 		vars["boreRolloverPref"] = write_choice(vars["boreRolloverPref"], "afterbore roll setting", "", $strings[Adventures, PvP Fights] );
 		writeln("</td></tr>");
-
 		writeln("<tr><td>Clan to spend the night in</td>");
 		writeln("<td>");
 		write_label("Rollover Clan", "");
@@ -269,7 +268,7 @@ void main() {
 		vars["boreRolloverClan"] = write_field(vars["boreRolloverClan"], "afterbore rollover clan name", "");
 		writeln("</td></tr>");
 		writeln("</table>");
-
+	finish_box();
 	finish_box();
 //	write_button("", "Save changes");
 	if(write_button("save", "Save"))

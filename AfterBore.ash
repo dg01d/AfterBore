@@ -301,10 +301,6 @@ void bfarm()
 {
 		print_html("<b>AfterBore:</b> Farming in the Black Forest - So You Don't Have To!");
 		maximize ("items", false );
-		foreach potion in $items[knob goblin eyedrops, buffing spray]
-		{
-			use (1, potion);
-		}
 		cli_execute ( "ccs " + BORE_BFARM_CCS ); //ccs to use 4-d camera
 		// leaves 5 adventures for any crafting which may need to be done at the end of the day
 		adventure ( (my_adventures()-5) , $location[black forest] );
@@ -391,13 +387,14 @@ void run()
 		if (vars["boreDrink"]== true) drink();
 		if (vars["boreDiet"]== true) diet();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
+	}
 		if (vars["boreClod"]== true) clod();
 		if (vars["boreShore"]== true) shoretrip();
 		if (vars["boreBlackFarm"] == true) bfarm();
 		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
 		summary();
-	}
+	
 
 	//test for adventures lost to rollover and shout if case
 
@@ -405,8 +402,13 @@ void run()
 			rollover();
 
 	else{
-	print_html ("<b>Something is amiss. You appear ready for rollover, but not to have adventured today.</b>");
-	print_html ("<b>Perhaps there is something you would like to do with your "+ my_adventures() +" adventures?</b>");
+
+		if (vars["boreRollover"] == false) print_html("<b>AfterBore is finished. Don't forget your rollover!</b>" );
+		else
+		{
+		print_html ("<b>Something is amiss. You appear ready for rollover, but not to have adventured today.</b>");
+		print_html ("<b>Perhaps there is something you would like to do with your "+ my_adventures() +" adventures?</b>");
+		}
 	}
 }
 
