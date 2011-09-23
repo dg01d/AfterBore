@@ -62,6 +62,8 @@ string BORE_MOB = vars["boreMonster"].to_monster();
 string BORE_FAX = fax_names[BORE_MOB];
 string BORE_4D = vars["boreClod_4dCCS"];
 string BORE_PUTTY = vars["boreClod_PuttyCCS"];
+string BORE_ADV = vars["boreAdv"];
+string BORE_ADV_SET = vars["boreAdvSet"];
 string BORE_VAC = vars["boreShoreStat"];
 location VAC_LOC = (BORE_VAC+" vacation").to_location();
 string BORE_MAX = vars["boreRolloverPref"];
@@ -413,9 +415,15 @@ void main()
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
 	
 		if (vars["boreClod"]== true) clod();
-		if (vars["boreShore"]== true) shoretrip();
-		if (vars["boreBlackFarm"] == true) bfarm();
-		if (vars["boreUserChoice"] == true) userscript();
+		if (vars["boreAdv"]== true) 
+		{
+			if (BORE_ADV_SET == "Take Vacations") shoretrip();
+			if (BORE_ADV_SET == "Black Item Farming") bfarm();
+			if (BORE_ADV_SET == "User Script") userscript();
+		}
+//		if (vars["boreShore"]== true) shoretrip();
+//		if (vars["boreBlackFarm"] == true) bfarm();
+//		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
 	                set_property ( "_bore_ran_today", "TRUE" );
 		summary();

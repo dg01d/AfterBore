@@ -197,12 +197,23 @@ void main() {
 
 	write_box("<b>What to Do? Tripping, Fighting or Scripting</b>");
 		writeln("<table>");
-		
-		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
+		writeln("<tr><td>Should AfterBore burn your Adventures?</td>");
 		writeln("<td>");
 
-		vars["boreShore"] = write_check(vars["boreShore"].to_boolean(), "afterbore shore setting", "");
+		vars["boreAdv"] = write_check(vars["boreAdv"].to_boolean(), "afterbore setting", "");
 		writeln("</td></tr>");
+
+
+		writeln("<tr><td>What should AfterBore do with Adventures?</td>");
+		writeln("<td>");
+		vars["boreAdvSet"] = write_choice(vars["boreAdvSet"], "afterbore adventure setting", "", $strings[Take Vacations, Black Item Farming, User Script] );
+		writeln("</td></tr>");		
+		writeln("<tr><td colspan='2' align='center'><b>&#8212;&nbsp;&#8212;</td></tr>");
+//		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
+//		writeln("<td>");
+//
+//		vars["boreShore"] = write_check(vars["boreShore"].to_boolean(), "afterbore shore setting", "");
+//		writeln("</td></tr>");
 
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
@@ -220,11 +231,11 @@ void main() {
 // Black Forest Hunting
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
 		
-		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
-		writeln("<td>");
+//		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
+//		writeln("<td>");
 
-		vars["boreBlackFarm"] = write_check(vars["boreBlackFarm"].to_boolean(), "afterbore black farm setting", "");
-		writeln("</td></tr>");
+//		vars["boreBlackFarm"] = write_check(vars["boreBlackFarm"].to_boolean(), "afterbore black farm setting", "");
+//		writeln("</td></tr>");
 
 		writeln("<tr><td>CSS to use for Black Forest Farming</td>");
 		writeln("<td>");
@@ -240,11 +251,11 @@ void main() {
 
 // Users own Script
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
-		writeln("<tr><td>Do your own thing in AfterBore?</td>");
-		writeln("<td>");
+//		writeln("<tr><td>Do your own thing in AfterBore?</td>");
+//		writeln("<td>");
 
-		vars["boreUserChoice"] = write_check(vars["boreUserChoice"].to_boolean(), "afterbore user choice setting", "");
-		writeln("</td></tr>");
+//		vars["boreUserChoice"] = write_check(vars["boreUserChoice"].to_boolean(), "afterbore user choice setting", "");
+//		writeln("</td></tr>");
 
 		writeln("<tr><td>Script to use for own adventuring</td>");
 		writeln("<td>");
