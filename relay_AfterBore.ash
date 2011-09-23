@@ -232,6 +232,12 @@ void main() {
 		vars["boreBlackFarm_CSS"] = write_field(vars["boreBlackFarm_CSS"], "afterbore black forest ccs", "");
 		writeln("</td></tr>");
 
+		writeln("<tr><td>Mood to use for Black Forest Farming</td>");
+		writeln("<td>");
+		attr("size='24'");
+		vars["boreBlackFarm_Mood"] = write_field(vars["boreBlackFarm_Mood"], "afterbore black forest mood", "");
+		writeln("</td></tr>");
+
 // Users own Script
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
 		writeln("<tr><td>Do your own thing in AfterBore?</td>");

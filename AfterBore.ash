@@ -67,6 +67,7 @@ location VAC_LOC = (BORE_VAC+" vacation").to_location();
 string BORE_MAX = vars["boreRolloverPref"];
 string BORE_BFARM = vars["boreBlackFarm"];
 string BORE_BFARM_CCS = vars["boreBlackFarm_CSS"];
+string BORE_BFARM_MOOD = vars["boreBlackFarm_Mood"];
 string BORE_USERC = vars["boreUserChoice"];
 string BORE_USERS = vars["boreUser_Script"];
 string BORE_ROLL = vars["boreRollover"];
@@ -184,7 +185,7 @@ void drink()
 
 
 // Eats the User Selected Food
-void diet() // This section is clearly in need of significant work.
+void diet() 
 {   
 	
    
@@ -243,6 +244,7 @@ void clod()
 		{
 			use ( 1, $item[spooky putty monster]);
 		}
+		
 	}
 
 // Takes Shoretrips towards the Boat Trophies.
@@ -303,10 +305,13 @@ void shoretrip()
 void bfarm()
 {
 		print_html("<b>AfterBore:</b> Farming in the Black Forest - So You Don't Have To!");
+		string OLD_MOOD = get_property("currentMood");
+		cli_execute ( "mood " + BORE_BFARM_MOOD);		
 		maximize ("items", false );
 		cli_execute ( "ccs " + BORE_BFARM_CCS ); //ccs to use 4-d camera
 		// leaves 5 adventures for any crafting which may need to be done at the end of the day
 		adventure ( (my_adventures()-5) , $location[black forest] );
+		cli_execute ( "mood " + OLD_MOOD);				
 
 }
 
@@ -378,7 +383,7 @@ void rollover()
 		{
 			print_html("AfterBore Drinking <b>" +BORE_ROLL_DRINK +"</b> to OverDrink" );
 			drink (1, BORE_ROLL_DRINK);		
-
+		}
 
 //			if (vars["boreDrink"] == true)
 //				drink (1, BORE_DRINK);
@@ -392,7 +397,7 @@ void rollover()
 
 
 //Ties it all together
-void run()
+void main()
 {
 
 	int have_4d = item_amount($item[4d Camera]);
@@ -412,12 +417,13 @@ void run()
 		if (vars["boreBlackFarm"] == true) bfarm();
 		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
+	                set_property ( "_bore_ran_today", "TRUE" );
 		summary();
 	}
 
 	//test for adventures lost to rollover and shout if case
 
-	if ( my_adventures() < 130 && BORE_ROLL == true ) 
+	if ( my_adventures() < 130 && BORE_ROLL == true && get_property("_bore_ran_today") == true) 
 			rollover();
 
 	else{
@@ -431,7 +437,3 @@ void run()
 	}
 }
 
-void main()
-	{
-	run();
-	}
