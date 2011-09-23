@@ -256,6 +256,18 @@ void main() {
 		writeln("<td>");
 		vars["boreRollover"] = write_check(vars["boreRollover"].to_boolean(), "afterbore rollover setting", "");
 		writeln("</td></tr>");
+		writeln("<tr><td>What to Drink for Rollover</td>");
+		writeln("<td>");
+		vars["boreRolloverNightCap"] = write_choice(vars["boreRolloverNightCap"], "afterbore nightcap setting", "", $strings[TrophyBooze, EatDrink, UserSelect] );
+		writeln("</td></tr>");
+		writeln("<tr><td>NightCap Drink</td>");
+		writeln("<td>");
+		write_label("Rollover Drink", "");
+		attr("size='24'");
+		vars["boreRolloverDrink"] = write_field(vars["boreRolloverDrink"], "afterbore rollover nightcap name name", "");
+		writeln("</td></tr>");
+
+
 		writeln("<tr><td>What to Boost for Rollover</td>");
 		writeln("<td>");
 		vars["boreRolloverPref"] = write_choice(vars["boreRolloverPref"], "afterbore roll setting", "", $strings[Adventures, PvP Fights] );

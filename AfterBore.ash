@@ -69,6 +69,9 @@ string BORE_BFARM = vars["boreBlackFarm"];
 string BORE_BFARM_CCS = vars["boreBlackFarm_CSS"];
 string BORE_USERC = vars["boreUserChoice"];
 string BORE_USERS = vars["boreUser_Script"];
+string BORE_ROLL = vars["boreRollover"];
+string BORE_ROLL_SET = vars["boreRolloverNightCap"];
+string BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
 
 
 
@@ -359,14 +362,30 @@ void summary()
 void rollover()
 	{
 		print_html("<b>AfterBore:</b> Setting up your rollover");
-		if ( my_inebriety() == inebriety_limit() ) 
+//		if ( my_inebriety() == inebriety_limit() ) 
+//		{
+		if (BORE_ROLL_SET == "EatDrink")
 		{
-			if (vars["boreDrink"] == true)
-				drink (1, BORE_DRINK);
-			else
-			// if we're not on bore booze, let eatdrink overdrink us
+			print("AfterBore Using EatDrink to OverDrink!");
 			eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
+		}			
+		if (BORE_ROLL_SET == "TrophyBooze")
+		{
+			print_html("AfterBore Drinking <b>" + BORE_DRINK +"</b> to OverDrink");
+			drink (1, BORE_DRINK);		
 		}
+		if (BORE_ROLL_SET == "UserSelect")
+		{
+			print_html("AfterBore Drinking <b>" +BORE_ROLL_DRINK +"</b> to OverDrink" );
+			drink (1, BORE_ROLL_DRINK);		
+
+
+//			if (vars["boreDrink"] == true)
+//				drink (1, BORE_DRINK);
+//			else
+			// if we're not on bore booze, let eatdrink overdrink us
+//			eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
+//		}
 		maximize (BORE_MAX, false );
 		chat_clan("/whitelist " + vars["boreRolloverClan"]);
 	}
@@ -381,29 +400,29 @@ void run()
 	int have_putty = item_amount($item[spooky putty sheet]);
 	if ((have_putty < 1) && (vars["boreClod"]== true)) abort("You have no Spooky Putty Sheet!");		
 
-	if ( my_inebriety() < inebriety_limit() ) 	
+	if ( my_inebriety() <= inebriety_limit() ) 	
 	{
 		if (vars["borePvp"]== true) pvp();
 		if (vars["boreDrink"]== true) drink();
 		if (vars["boreDiet"]== true) diet();
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
-	}
+	
 		if (vars["boreClod"]== true) clod();
 		if (vars["boreShore"]== true) shoretrip();
 		if (vars["boreBlackFarm"] == true) bfarm();
 		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
 		summary();
-	
+	}
 
 	//test for adventures lost to rollover and shout if case
 
-	if ( my_adventures() < 130 && vars["boreRollover"] == true ) 
+	if ( my_adventures() < 130 && BORE_ROLL == true ) 
 			rollover();
 
 	else{
 
-		if (vars["boreRollover"] == false) print_html("<b>AfterBore is finished. Don't forget your rollover!</b>" );
+		if (BORE_ROLL == false) print_html("<b>AfterBore is finished. Don't forget your rollover!</b>" );
 		else
 		{
 		print_html ("<b>Something is amiss. You appear ready for rollover, but not to have adventured today.</b>");
