@@ -7,7 +7,7 @@ import <htmlform.ash>
 import <consumption.ash>
 import <zlib.ash>
 
-string thisver = "0.9.6";		// This is the script's version!
+string thisver = "0.9.7";		// This is the script's version!
 int AfterBore_PAGE = 9999;
  
 // check_version("relay_AfterBore", "relay_AfterBore", thisver, AfterBore_PAGE);
