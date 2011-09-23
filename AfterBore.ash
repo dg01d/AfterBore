@@ -74,7 +74,7 @@ string BORE_USERC = vars["boreUserChoice"];
 string BORE_USERS = vars["boreUser_Script"];
 string BORE_ROLL = vars["boreRollover"];
 string BORE_ROLL_SET = vars["boreRolloverNightCap"];
-string BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
+item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
 
 
 
@@ -383,8 +383,8 @@ void rollover()
 		}
 		if (BORE_ROLL_SET == "UserSelect")
 		{
-			print_html("AfterBore Drinking <b>" +BORE_ROLL_DRINK +"</b> to OverDrink" );
-			drink (1, BORE_ROLL_DRINK);		
+			print_html("AfterBore Drinking <b>" + BORE_ROLL_DRINK +"</b> to OverDrink" );
+			drink (1, BORE_ROLL_DRINK );		
 		}
 
 //			if (vars["boreDrink"] == true)
