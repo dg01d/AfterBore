@@ -60,8 +60,10 @@ item BORE_DRINK = vars["boreDiet_Drink"].to_item();
 //item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
 string BORE_MOB = vars["boreMonster"].to_monster();
 string BORE_FAX = fax_names[BORE_MOB];
-string BORE_4D = vars["boreClod_4dCCS"];
-string BORE_PUTTY = vars["boreClod_PuttyCCS"];
+string BORE_4DCCS = vars["boreClod_4dCCS"];
+string BORE_PUTTYCCS = vars["boreClod_PuttyCCS"];
+string BORE_4D = vars["boreClod_4d"];
+string BORE_PUTTY = vars["boreClod_Putty"];
 string BORE_ADV = vars["boreAdv"];
 string BORE_ADV_SET = vars["boreAdvSet"];
 string BORE_VAC = vars["boreShoreStat"];
@@ -138,7 +140,7 @@ void pvp()
 
 void get_ode()
 	{
-	while ((have_effect($effect[ode to booze]) < inebriety_limit() ) && have_skill($skill[ode to booze]))
+	while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze]))
 	{
 	   use_skill(1 , $skill[ode to booze]);
    	}
@@ -220,6 +222,18 @@ void clod()
 	{
 		print_html("<b>AfterBore:</b> Fighting your Selected Monster.");
 		if ( get_property ( "_photocopyUsed" ) == true ) return;
+//	Checker to see that you have your putty and cameras
+		if (BORE_4D == true)
+		{
+			int have_4d = item_amount($item[4d Camera]);
+			if (have_4d < 1)  abort("You have no 4D Cameras!");
+		}
+		if (BORE_PUTTY == true)
+		{
+			int have_putty = item_amount($item[spooky putty sheet]);
+			if (have_putty < 1) abort("You have no Spooky Putty Sheet!");   
+		}   
+//	Checker to see faxbot is active
 		if( !is_online( "faxbot" ) ) abort( "Faxbot is dead!" );
 		while ( get_property( "photocopyMonster" ) != BORE_MOB )
 		{
@@ -238,13 +252,34 @@ void clod()
 			use (1, potion);
 		}
 
-		cli_execute ( "ccs " + BORE_4D ); //ccs to use 4-d camera
-		use ( 1, $item[photocopied monster]);
-		cli_execute ( "ccs " + BORE_PUTTY );//ccs to use putty
-		use ( 1, $item[Shaking 4-d camera]);
-		for j from 1 to 5
+		if (BORE_4D == false && BORE_PUTTY == false)
+			use ( 1, $item[photocopied monster]);
+
+		if (BORE_4D == true && BORE_PUTTY == false)
 		{
-			use ( 1, $item[spooky putty monster]);
+			cli_execute ( "ccs " + BORE_4DCCS ); //ccs to use 4-d camera
+			use ( 1, $item[photocopied monster]);
+			use ( 1, $item[Shaking 4-d camera]);
+		}
+		if (BORE_4D == true && BORE_PUTTY == true)
+		{
+			cli_execute ( "ccs " + BORE_4DCCS ); //ccs to use 4-d camera
+			use ( 1, $item[photocopied monster]);
+			cli_execute ( "ccs " + BORE_PUTTYCCS );//ccs to use putty
+			use ( 1, $item[Shaking 4-d camera]);
+			for j from 1 to 5
+			{
+				use ( 1, $item[spooky putty monster]);
+			}
+		}
+		if (BORE_4D == false && BORE_PUTTY == true)
+		{
+			cli_execute ( "ccs " + BORE_PUTTYCCS ); //ccs to use putty
+			use ( 1, $item[photocopied monster]);
+			for j from 1 to 5
+			{
+				use ( 1, $item[spooky putty monster]);
+			}
 		}
 		
 	}
@@ -257,17 +292,14 @@ void shoretrip()
 		print_html("<b>AfterBore:</b> About to have some Vacations");
 		print(BORE_VAC + " Vacations!");
 		maximize ("mp regen max", false );//let's get some MP out of this
-	/*	
 
-		This is the method which SHOULD work, but doesn't
-		KOLMAFIA returns: Bad location value: "VAC_LOC" (AfterBore.ash, line 260)
 		for foo from 1 to (my_adventures() / 3)
 			{
-			print("Taking Trip No."+foo);
-			adventure ( 1 , ($location[VAC_LOC]) );
-			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
+				print("Taking Trip No."+foo);
+				adventure ( 1 , VAC_LOC );
+				setvar("boreShoretrips", to_int(vars["boreShoretrips"]) + 1);
 			}
-	*/
+	/*
 		
 		if (BORE_VAC == "Moxie")
 		{
@@ -300,7 +332,7 @@ void shoretrip()
 			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 		}
-
+		*/
 	}
 
 // Black Forest Farming
@@ -379,11 +411,13 @@ void rollover()
 		if (BORE_ROLL_SET == "TrophyBooze")
 		{
 			print_html("AfterBore Drinking <b>" + BORE_DRINK +"</b> to OverDrink");
+			get_ode();
 			drink (1, BORE_DRINK);		
 		}
 		if (BORE_ROLL_SET == "UserSelect")
 		{
 			print_html("AfterBore Drinking <b>" + BORE_ROLL_DRINK +"</b> to OverDrink" );
+			get_ode();
 			drink (1, BORE_ROLL_DRINK );		
 		}
 

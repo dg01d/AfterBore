@@ -176,6 +176,12 @@ void main() {
 
 		vars["boreMonster"] = write_field(vars["boreMonster"], "afterbore monster name", "");
 		writeln("</td></tr>");
+
+		writeln("<tr><td>");
+		vars["boreClod_4d"] = write_check(vars["boreClod_4d"].to_boolean(), "afterbore 4d setting", "Use 4D Camera?");
+	writeln("</td><td>");
+		vars["boreClod_Putty"] = write_check(vars["boreClod_Putty"].to_boolean(), "afterbore putty setting", "Use Putty?");
+		writeln("<tr><td>");
 		writeln("<tr><td>CCS to use for 4D Camera</td>");
 		writeln("<td>");
 		attr("size='24'");
