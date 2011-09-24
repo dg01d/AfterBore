@@ -139,6 +139,8 @@ void pvp()
 	}
 
 void get_ode()
+
+	maximize("Additional Song -tie", false); 
 	{
 	while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze]))
 	{
