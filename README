@@ -9,8 +9,12 @@ http://kolmafia.us/showthread.php?1005 -- consumption.ash
 http://kolmafia.us/showthread.php?2072 -- zlib.ash
 http://kolmafia.us/showthread.php?3842 -- htmlform.ash
 
-          You MUST run the Relay Script to
-          set configuration options before
-          attempting to use AfterBore.ash 
+relay_AfterBore.ash goes in your relay/ folder
+Fax-List.txt goes in your data/ folder
+AfterBore.ash goes in your scripts/ folder
+
+      You MUST run the Relay Script to
+      set configuration options before
+      attempting to use AfterBore.ash!
 
 Enjoy.
