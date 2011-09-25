@@ -56,8 +56,6 @@ string [string] fax_names;
 // Some Settings & Variables to make Script Cleaner
 item BORE_FOOD = vars["boreDiet_Food"].to_item();
 item BORE_DRINK = vars["boreDiet_Drink"].to_item();
-//item BORE_DRINK_FILLER = get_property("boreDiet_Drink_Filler").to_item();
-//item BORE_SPLEEN = get_property("boreDiet_Spleen").to_item();
 string BORE_MOB = vars["boreMonster"].to_monster();
 string BORE_FAX = fax_names[BORE_MOB];
 string BORE_4DCCS = vars["boreClod_4dCCS"];
@@ -182,8 +180,6 @@ void drink()
 		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
 		drink(amount, BORE_DRINK);
 		}
-//		int fillup = floor(inebriety_limit() - my_inebriety());
-//		drink(fillup, BORE_DRINK_FILLER);
 	}
 
 
@@ -207,14 +203,6 @@ void diet()
       }
 }
 
-// Spleens the, you get the picture
-/*void spleen()
-	{
-		use (3, BORE_SPLEEN);
-		use (1, $item[mojo filter]);
-		use (1, BORE_SPLEEN);
-	}
-*/
 
 // Fights Monster as selected by the user. 
 // The Script maximizes itemdrops, and can become somewhat expensive :)
@@ -285,8 +273,6 @@ void clod()
 	}
 
 // Takes Shoretrips towards the Boat Trophies.
-// If someone could show me a method of getting this down to one line, I'd be a happy bunny.
-// something along the lines of : adventure ( 1 , VAC_LOC ); // which didn't work :(
 void shoretrip()
 	{
 		print_html("<b>AfterBore:</b> About to have some Vacations");
@@ -299,40 +285,7 @@ void shoretrip()
 				adventure ( 1 , VAC_LOC );
 				setvar("boreShoretrips", to_int(vars["boreShoretrips"]) + 1);
 			}
-	/*
-		
-		if (BORE_VAC == "Moxie")
-		{
 
-		for foo from 1 to (my_adventures() / 3)
-			{
-			print("Taking Trip No."+foo);
-			adventure ( 1 , $location[moxie vacation] );
-			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
-			}
-		}
-		if (BORE_VAC == "Muscle")
-		{
-
-		for foo from 1 to (my_adventures() / 3)
-			{
-			print("Taking Trip No."+foo);
-			adventure ( 1 , $location[muscle vacation] );
-			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
-			}
-
-		}
-		if (BORE_VAC == "Mysticality")
-		{
-
-		for foo from 1 to (my_adventures() / 3)
-			{
-			print("Taking Trip No."+foo);
-			adventure ( 1 , $location[mysticality vacation] );
-			set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
-			}
-		}
-		*/
 	}
 
 // Black Forest Farming
@@ -401,8 +354,7 @@ void summary()
 void rollover()
 	{
 		print_html("<b>AfterBore:</b> Setting up your rollover");
-//		if ( my_inebriety() == inebriety_limit() ) 
-//		{
+
 		if (BORE_ROLL_SET == "EatDrink")
 		{
 			print("AfterBore Using EatDrink to OverDrink!");
@@ -421,12 +373,7 @@ void rollover()
 			drink (1, BORE_ROLL_DRINK );		
 		}
 
-//			if (vars["boreDrink"] == true)
-//				drink (1, BORE_DRINK);
-//			else
-			// if we're not on bore booze, let eatdrink overdrink us
-//			eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), TRUE );
-//		}
+
 		maximize (BORE_MAX, false );
 		chat_clan("/whitelist " + vars["boreRolloverClan"]);
 	}
@@ -455,9 +402,6 @@ void main()
 			if (BORE_ADV_SET == "Black Item Farming") bfarm();
 			if (BORE_ADV_SET == "User Script") userscript();
 		}
-//		if (vars["boreShore"]== true) shoretrip();
-//		if (vars["boreBlackFarm"] == true) bfarm();
-//		if (vars["boreUserChoice"] == true) userscript();
 		if (vars["boreDonate"]== true) donate();
 	                set_property ( "_bore_ran_today", "TRUE" );
 		summary();

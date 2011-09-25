@@ -58,31 +58,12 @@ void main() {
 		writeln("</td></tr>");
 		writeln("<tr><td colspan='2' align='center'>Food Trophy Consumption To Date</td></tr>");
 
-/*		writeln("<tr><td>Spaghetti with Skullheads</td>");
-		writeln("<td>");
-		writeln("" +food_consumed[$item[spaghetti with skullheads]] + "/5");
-		writeln("</tr></td>");
-*/
-/*
-		writeln("<tr><td>Ghuol Guolash</td>");
-		writeln("<td>");
-		writeln("" +food_consumed[$item[ghuol guolash]] + "/11");
-		writeln("</tr></td>");
-*/
+
 		writeln("<tr><td align=\"right\">Herb Brownies&#58;</td>");
 		writeln("<td>");
 		writeln("" +food_consumed[$item[herb brownies]] + "/420");
 		writeln("</tr></td>");
-/*
-		writeln("<tr><td>White Choc & Tomato Pizza</td>");
-		writeln("<td>");
-		writeln("" +food_consumed[$item[white chocolate and tomato pizza]] + "/5");
-		writeln("</tr></td>");
-		writeln("<tr><td>Lucky Surprise Egg</td>");
-		writeln("<td>");
-		writeln("" +food_consumed[$item[lucky surprise egg]] + "/5");
-		writeln("</tr></td>");
-*/
+
 
 		writeln("<tr><td align=\"right\">White Citadel Burger&#58;</td>");
 		writeln("<td>");
@@ -136,27 +117,10 @@ void main() {
 		vars["boreDiet_Drink"] = write_choice(vars["boreDiet_Drink"], "afterbore diet drink setting", "", $strings[White Canadian, Tomato Daiquiri, Around the World] );
 		writeln("</td></tr>");
 
-/*
-		writeln("<tr><td>Select Filler Drink (all 1 drunk)</td>");
-		writeln("<td>");
-		set_property( "boreDiet_Drink_Filler", write_choice(get_property("boreDiet_Drink_Filler"), "boreDiet_Drink_Filler", "", $strings[pumpkin beer, distilled fortified wine, thermos full of Knob coffee, Moonthril Schnapps, cup of primitive beer, can of Swiller, McMillicancuddy's Special Lager, melted Jell-o shot, thistle wine, cruelty-free wine, elven cellocello, herringcello, slimy fermented bile bladder, Cobb's Knob Wurstbrau, shot of blackberry schnapps, cream stout, Russian Ice, shot of rotgut, booze-soaked cherry, gin-soaked blotter paper, fine wine, shot of flower schnapps, shot of grapefruit schnapps, shot of orange schnapps, shot of tomato schnapps, Ram's Face Lager, ice-cold Sir Schlitz, ice-cold Willer, Imp Ale, plastic cup of beer]) );
-		writeln("</td></tr>");
-*/
 
 
-/*
-		writeln("<tr><td>Use particular Spleen Item in AfterBore?</td>");
-		writeln("<td>");
-		set_property("boreSpleen", write_check(get_property("boreSpleen").to_boolean(), 
-		"boreSpleen", ""));
-		writeln("</td></tr>");
 
 
-		writeln("<tr><td>Special Spleen Item</td>");
-		writeln("<td>");
-		set_property( "boreDiet_Spleen", write_choice(get_property("boreDiet_Spleen"), "boreDiet_Spleen", "", $strings[Agua de Vida, Roc Feather, Coffee Pixie Sticks, Beastly paste, Bug paste, Cloryphyll paste, Cosmic paste, Crimbo paste, Demonic paste, Ectoplasmic paste, Elemental paste, Fishy paste, Goblin paste, Gooey paste, Greasy paste, Hippy paste, Hobo paste, Indescribably Horrible paste, Mer-Kin paste, Oily paste, Orc paste, Penguin paste, Pirate paste, Slimy paste, Strange paste ]) );
-		writeln("</td></tr>");
-*/
 		writeln("</table>");
 	finish_box();
 
@@ -215,17 +179,13 @@ void main() {
 		vars["boreAdvSet"] = write_choice(vars["boreAdvSet"], "afterbore adventure setting", "", $strings[Take Vacations, Black Item Farming, User Script] );
 		writeln("</td></tr>");		
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;&nbsp;&#8212;</td></tr>");
-//		writeln("<tr><td>Take Shore Trips in AfterBore?</td>");
-//		writeln("<td>");
-//
-//		vars["boreShore"] = write_check(vars["boreShore"].to_boolean(), "afterbore shore setting", "");
-//		writeln("</td></tr>");
+
 
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
 
 		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong <br />& Reset for each Ascension!");
-//		writeln(vars["boreShoretrips"]);
+
 		writeln("</td></tr>");
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
@@ -237,11 +197,7 @@ void main() {
 // Black Forest Hunting
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
 		
-//		writeln("<tr><td>Farm Black Items in AfterBore?</td>");
-//		writeln("<td>");
 
-//		vars["boreBlackFarm"] = write_check(vars["boreBlackFarm"].to_boolean(), "afterbore black farm setting", "");
-//		writeln("</td></tr>");
 
 		writeln("<tr><td>CSS to use for Black Forest Farming</td>");
 		writeln("<td>");
@@ -257,11 +213,6 @@ void main() {
 
 // Users own Script
 		writeln("<tr><td colspan='2' align='center'><b>&#8212;OR&#8212;</td></tr>");
-//		writeln("<tr><td>Do your own thing in AfterBore?</td>");
-//		writeln("<td>");
-
-//		vars["boreUserChoice"] = write_check(vars["boreUserChoice"].to_boolean(), "afterbore user choice setting", "");
-//		writeln("</td></tr>");
 
 		writeln("<tr><td>Script to use for own adventuring</td>");
 		writeln("<td>");
@@ -305,7 +256,7 @@ void main() {
 		writeln("</table>");
 	finish_box();
 	finish_box();
-//	write_button("", "Save changes");
+
 	if(write_button("save", "Save"))
 	{
 		writeln("<font color='green'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Settings saved at "+ now_to_string("d MMM yyyy HH:mm: Z") +"</font>");
