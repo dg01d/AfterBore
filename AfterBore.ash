@@ -50,7 +50,7 @@ boolean safe_cli_execute( string cmd )
 
 
 string [string] fax_names;
-	 load_current_map( "Fax_List", fax_names );
+	 file_to_map( "Fax_List.txt", fax_names );
 
 
 // Some Settings & Variables to make Script Cleaner
@@ -141,11 +141,9 @@ void pvp()
 void get_ode()
 
 	maximize("Additional Song -tie", false); 
-	{
-	while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze]))
-	{
-	   use_skill(1 , $skill[ode to booze]);
-   	}
+
+	while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze])) use_skill(1 , $skill[ode to booze]);
+   	
 	if ( ! have_skill ( $skill [ode to booze] ))
 	{
 		print("purchasing Ode to Booze from a buffbot...", "blue");
@@ -164,7 +162,7 @@ void get_ode()
 	   }
 
 	}
-}
+
 
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
