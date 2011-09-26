@@ -82,7 +82,7 @@ item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
 
 int total_donation( string hero )
 	{
-    		return get_property( "heroDonation" + hero ).to_int();
+		return get_property( "heroDonation" + hero ).to_int();
 	}
 
 string to_command( string hero )
@@ -164,45 +164,48 @@ void get_ode()
 
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
+{
+	if (get_property( "_bore_dieted_today") != "TRUE" )
 	{
 		print_html("<b>AfterBore:</b> About to Start in on the Booze");
 
 
 		if (BORE_DRINK == to_item("around the world"))
 		{
-		get_ode();
-		int amount = floor((inebriety_limit() - my_inebriety()) / 4);
-		drink(amount, BORE_DRINK);
+			get_ode();
+			int amount = floor((inebriety_limit() - my_inebriety()) / 4);
+			drink(amount, BORE_DRINK);
 		}
 		else 
 		{
-		get_ode();
-		int amount = floor((inebriety_limit() - my_inebriety()) / 3);
-		drink(amount, BORE_DRINK);
+			get_ode();
+			int amount = floor((inebriety_limit() - my_inebriety()) / 3);
+			drink(amount, BORE_DRINK);
 		}
 	}
-
-
+	else print_html("<b>AfterBore:</b> We appear to have been boozing already!");
+}
 
 // Eats the User Selected Food
 void diet() 
 {   
-	
-   
-	print_html("<b>AfterBore:</b> Eating Time!");
-	int full_per_unit = 2;
-	if ( BORE_FOOD == $item[black pudding] )
-		full_per_unit = 3;
-	while ( (my_fullness() + full_per_unit ) <= fullness_limit() )
-	{
-		if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
+	if (get_property( "_bore_dieted_today") != "TRUE" )	
+  { 
+		print_html("<b>AfterBore:</b> Eating Time!");
+		int full_per_unit = 2;
+		if ( BORE_FOOD == $item[black pudding] )
+			full_per_unit = 3;
+		while ( (my_fullness() + full_per_unit ) <= fullness_limit() )
 		{
-			use (1, $item[milk of magnesium]);
+			if ( have_effect ( $effect[got milk]) < 3)//use milk only as required
+			{
+				use (1, $item[milk of magnesium]);
+			}
+    eat (1, BORE_FOOD);
 		}
-         eat (1, BORE_FOOD);
-      }
+	}
+	else print_html("<b>AfterBore:</b> We appear to have been eating already!");
 }
-
 
 // Fights Monster as selected by the user. 
 // The Script maximizes itemdrops, and can become somewhat expensive :)
@@ -341,7 +344,9 @@ void donate()
 
 void summary()
 	{
-		print_html("<b>AfterBore:</b> Summary");
+		print("");
+		print("");
+		print_html("<font color='red'><b>AfterBore:</b> Summary</font>");
 		print ("Total black puddings fought " + get_property( "blackPuddingsDefeated" ), "green");
 		print ("Total shore trips " + get_property( "boreShoretrips" ), "green");
 		print ("Total 4-D cameras used " + get_property ( "camerasUsed" ), "green");
@@ -383,18 +388,16 @@ void rollover()
 void main()
 {
 
-	int have_4d = item_amount($item[4d Camera]);
-	if ((have_4d < 1) && (vars["boreClod"]== true))  abort("You have no 4D Cameras!");
-	int have_putty = item_amount($item[spooky putty sheet]);
-	if ((have_putty < 1) && (vars["boreClod"]== true)) abort("You have no Spooky Putty Sheet!");		
-
 	if ( my_inebriety() <= inebriety_limit() ) 	
 	{
 		if (vars["borePvp"]== true) pvp();
 		if (vars["boreDrink"]== true) drink();
 		if (vars["boreDiet"]== true) diet();
+		if (get_property( "_bore_dieted_today") != "TRUE" )
+		{
 		eatdrink ( fullness_limit(), inebriety_limit(), spleen_limit(), FALSE );//use up any remaining diet room
-	
+		}
+		set_property ( "_bore_dieted_today", "TRUE" );	
 		if (vars["boreClod"]== true) clod();
 		if (vars["boreAdv"]== true) 
 		{
@@ -403,8 +406,7 @@ void main()
 			if (BORE_ADV_SET == "User Script") userscript();
 		}
 		if (vars["boreDonate"]== true) donate();
-	                set_property ( "_bore_ran_today", "TRUE" );
-		summary();
+		set_property ( "_bore_ran_today", "TRUE" );
 	}
 
 	//test for adventures lost to rollover and shout if case
@@ -421,5 +423,6 @@ void main()
 		print_html ("<b>Perhaps there is something you would like to do with your "+ my_adventures() +" adventures?</b>");
 		}
 	}
+	summary();
 }
 
