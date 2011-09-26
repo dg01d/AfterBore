@@ -137,30 +137,34 @@ void pvp()
 	}
 
 void get_ode()
+{
+	if ( my_inebriety() < inebriety_limit() )
+		{
+		maximize("Additional Song -tie", false); 
 
-	maximize("Additional Song -tie", false); 
-
-	while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze])) use_skill(1 , $skill[ode to booze]);
+		while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze])) use_skill(1 , $skill[ode to booze]);
    	
-	if ( ! have_skill ( $skill [ode to booze] ))
-	{
-		print("purchasing Ode to Booze from a buffbot...", "blue");
-		if ( have_effect ( $effect [polka of plenty]) > 0 )
-		cli_execute ("shrug polka" );
-		cli_execute("csend 1 meat to Testudinata");
-		int iterations = 0;
-		while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
-		   wait(30);
-		   refresh_status();
-		   iterations = iterations + 1;
-	   }
-	if(have_effect($effect[Ode to Booze]) < 1)
-	{
-	   print("failed to get Ode to Booze", "red");
+		if ( ! have_skill ( $skill [ode to booze] ))
+		{
+			print("purchasing Ode to Booze from a buffbot...", "blue");
+			if ( have_effect ( $effect [polka of plenty]) > 0 )
+			cli_execute ("shrug polka" );
+			cli_execute("csend 1 meat to Testudinata");
+			int iterations = 0;
+			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) 
+				{
+			   wait(30);
+			   refresh_status();
+			   iterations = iterations + 1;
+	   		}
+		if(have_effect($effect[Ode to Booze]) < 1)
+		{
+		   print("failed to get Ode to Booze", "red");
 	   }
 
+		}
 	}
-
+}
 
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
@@ -286,7 +290,7 @@ void shoretrip()
 			{
 				print("Taking Trip No."+foo);
 				adventure ( 1 , VAC_LOC );
-				setvar("boreShoretrips", to_int(vars["boreShoretrips"]) + 1);
+				set_property("boreShoretrips", to_int(get_property("boreShoretrips")) + 1);
 			}
 
 	}
