@@ -137,55 +137,49 @@ void pvp()
 	}
 
 void get_ode()
+void get_ode()
 {
-	if ( my_inebriety() < inebriety_limit() )
-		{
-		maximize("Additional Song -tie", false); 
+   maximize("Additional Song -tie", false); 
 
-		while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze])) use_skill(1 , $skill[ode to booze]);
-   	
-		if ( ! have_skill ( $skill [ode to booze] ))
-		{
-			print("purchasing Ode to Booze from a buffbot...", "blue");
-			if ( have_effect ( $effect [polka of plenty]) > 0 )
-			cli_execute ("shrug polka" );
-			cli_execute("csend 1 meat to Testudinata");
-			int iterations = 0;
-			while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) 
-				{
-			   wait(30);
-			   refresh_status();
-			   iterations = iterations + 1;
-	   		}
-		if(have_effect($effect[Ode to Booze]) < 1)
-		{
-		   print("failed to get Ode to Booze", "red");
-	   }
+   while ((have_effect($effect[ode to booze]) <= inebriety_limit() ) && have_skill($skill[ode to booze])) use_skill(1 , $skill[ode to booze]);
+      
+   if ( ! have_skill ( $skill [ode to booze] ))
+   {
+      print("purchasing Ode to Booze from a buffbot...", "blue");
+      if ( have_effect ( $effect [polka of plenty]) > 0 )
+      cli_execute ("shrug polka" );
+      cli_execute("csend 1 meat to Testudinata");
+      int iterations = 0;
+      while(have_effect($effect[Ode to Booze]) < 1 && iterations < 30) {
+         wait(30);
+         refresh_status();
+         iterations = iterations + 1;
+      }
+   if(have_effect($effect[Ode to Booze]) < 1)
+   {
+      print("failed to get Ode to Booze", "red");
+      }
 
-		}
-	}
+   }
 }
 
 // Drinks the User Selected Drink - Uses Joe's Ode routines
 void drink()
 {
-	if (get_property( "_bore_dieted_today") != "TRUE" )
-	{
-		print_html("<b>AfterBore:</b> About to Start in on the Booze");
-
-
-		if (BORE_DRINK == to_item("around the world"))
-		{
-			get_ode();
-			int amount = floor((inebriety_limit() - my_inebriety()) / 4);
-			drink(amount, BORE_DRINK);
-		}
-		else 
-		{
-			get_ode();
-			int amount = floor((inebriety_limit() - my_inebriety()) / 3);
-			drink(amount, BORE_DRINK);
-		}
+	if (get_property( "_bore_dieted_today") != "TRUE" )	{
+		if ( my_inebriety() < inebriety_limit() ) {
+   print_html("<b>AfterBore:</b> About to Start in on the Booze");
+   if (BORE_DRINK == to_item("around the world")) {
+      get_ode();
+      int amount = floor((inebriety_limit() - my_inebriety()) / 4);
+      drink(amount, BORE_DRINK);
+   }
+   else {
+      get_ode();
+      int amount = floor((inebriety_limit() - my_inebriety()) / 3);
+      drink(amount, BORE_DRINK);
+      }
+		}	
 	}
 	else print_html("<b>AfterBore:</b> We appear to have been boozing already!");
 }
@@ -193,8 +187,7 @@ void drink()
 // Eats the User Selected Food
 void diet() 
 {   
-	if (get_property( "_bore_dieted_today") != "TRUE" )	
-  { 
+	if (get_property( "_bore_dieted_today") != "TRUE" )	{ 
 		print_html("<b>AfterBore:</b> Eating Time!");
 		int full_per_unit = 2;
 		if ( BORE_FOOD == $item[black pudding] )
@@ -391,7 +384,7 @@ void rollover()
 //Ties it all together
 void main()
 {
-
+	maximize ("mp regen max", false );
 	if ( my_inebriety() <= inebriety_limit() ) 	
 	{
 		if (vars["borePvp"]== true) pvp();
