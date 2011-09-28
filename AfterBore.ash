@@ -75,8 +75,9 @@ string BORE_USERS = vars["boreUser_Script"];
 string BORE_ROLL = vars["boreRollover"];
 string BORE_ROLL_SET = vars["boreRolloverNightCap"];
 item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
+boolean COMPLETED_SETUP = vars["bore_setup"].to_boolean();
 
-
+setvar("bore_setup", false);
 
 // Donation Script from slyz
 
@@ -384,6 +385,13 @@ void rollover()
 //Ties it all together
 void main()
 {
+	if(!COMPLETED_SETUP)
+		{
+		print("Please first configure the options with the relay script", "green");
+		print("Remember to click the Save button when you're done", "green");
+		}
+	else
+	{
 	maximize ("mp regen max", false );
 	if ( my_inebriety() <= inebriety_limit() ) 	
 	{
@@ -421,5 +429,6 @@ void main()
 		}
 	}
 	summary();
+	}
 }
 

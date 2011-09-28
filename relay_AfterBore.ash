@@ -260,6 +260,8 @@ void main() {
 	if(write_button("save", "Save"))
 	{
 		writeln("<font color='green'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Settings saved at "+ now_to_string("d MMM yyyy HH:mm: Z") +"</font>");
+		if(vars["bore_setup"] == "false")
+			vars["bore_setup"] = "true";
 		updatevars();
 	}
 
