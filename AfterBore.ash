@@ -377,6 +377,7 @@ void rollover()
 
 
 		maximize (BORE_MAX, false );
+		if ( vars["boreRolloverClan"] != "" )
 		chat_clan("/whitelist " + vars["boreRolloverClan"]);
 	}
 
