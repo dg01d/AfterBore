@@ -6,10 +6,10 @@ import <zlib.ash>
 import <eatdrink.ash>
 //script "AfterBore.ash";
 
-string thisver = "0.9.7";		// This is the script's version!
-int AfterBore_PAGE = 9999;
+string thisver = "1.0";		// This is the script's version!
+int AfterBore_PAGE = 7936;
  
-// check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
+ check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, slyz & Especially Panama Joe whose script this is.
@@ -75,8 +75,9 @@ string BORE_USERS = vars["boreUser_Script"];
 string BORE_ROLL = vars["boreRollover"];
 string BORE_ROLL_SET = vars["boreRolloverNightCap"];
 item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
+boolean COMPLETED_SETUP = vars["bore_setup"].to_boolean();
 
-
+setvar("bore_setup", false);
 
 // Donation Script from slyz
 
@@ -136,7 +137,6 @@ void pvp()
 
 	}
 
-void get_ode()
 void get_ode()
 {
    maximize("Additional Song -tie", false); 
@@ -385,6 +385,13 @@ void rollover()
 //Ties it all together
 void main()
 {
+	if(!COMPLETED_SETUP)
+		{
+		print("Please first configure the options with the relay script", "green");
+		print("Remember to click the Save button when you're done", "green");
+		}
+	else
+	{
 	maximize ("mp regen max", false );
 	if ( my_inebriety() <= inebriety_limit() ) 	
 	{
@@ -422,5 +429,6 @@ void main()
 		}
 	}
 	summary();
+	}
 }
 
