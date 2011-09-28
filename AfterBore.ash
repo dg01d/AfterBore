@@ -7,9 +7,9 @@ import <eatdrink.ash>
 //script "AfterBore.ash";
 
 string thisver = "1.0";		// This is the script's version!
-int AfterBore_PAGE = 9999;
+int AfterBore_PAGE = 7936;
  
-// check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
+ check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, slyz & Especially Panama Joe whose script this is.

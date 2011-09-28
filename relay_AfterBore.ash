@@ -8,9 +8,9 @@ import <consumption.ash>
 import <zlib.ash>
 
 string thisver = "1.0";		// This is the script's version!
-int AfterBore_PAGE = 9999;
+int AfterBore_PAGE = 7936;
  
-// check_version("relay_AfterBore", "relay_AfterBore", thisver, AfterBore_PAGE);
+
 
 // Thanks to those whose work has been absorbed to make this: 
 //    jasonharper, Bale & Especially Panama Joe whose idea this is.
@@ -28,7 +28,7 @@ int AfterBore_PAGE = 9999;
 
 void main() { 
     	write_page(); 
-//	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, 7015));     
+	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, AfterBore_PAGE));     
 	writeln("<br />");	
 	write_box("AfterBore Settings v"+ thisver);
 
