@@ -137,7 +137,6 @@ void pvp()
 	}
 
 void get_ode()
-void get_ode()
 {
    maximize("Additional Song -tie", false); 
 
