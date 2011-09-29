@@ -272,6 +272,20 @@ void clod()
 		
 	}
 
+//Sets up the ShoreTrip Counter
+int trips()
+	{
+	int done_trips = 0;
+	string page = visit_url("shore.php");
+	matcher shore_trips = create_matcher ( "You have taken (\\d+)" , page );
+	if(shore_trips.find())
+	 {
+	  done_trips = (shore_trips.group(1)).to_int();
+	 }
+	return (done_trips);
+	}
+
+
 // Takes Shoretrips towards the Boat Trophies.
 void shoretrip()
 	{
@@ -345,7 +359,7 @@ void summary()
 		print("");
 		print_html("<font color='red'><b>AfterBore:</b> Summary</font>");
 		print ("Total black puddings fought " + get_property( "blackPuddingsDefeated" ), "green");
-		print ("Total shore trips " + get_property( "boreShoretrips" ), "green");
+		print ("Total shore trips " + (trips()), "green");
 		print ("Total 4-D cameras used " + get_property ( "camerasUsed" ), "green");
 		print ("Donated to Boris " + get_property( "heroDonationBoris" ), "green");
 		print ("Donated to Jarlsberg " + get_property( "heroDonationJarlsberg" ), "green");

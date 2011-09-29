@@ -192,11 +192,9 @@ void main() {
 
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
-		writeln("You have taken "+ done_trips + " shore trips!");
-//		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong<br />& Reset for each Ascension", ""));
-//		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong <br />& Reset for each Ascension!");
-
+		writeln( done_trips );
 		writeln("</td></tr>");
+		
 		writeln("<tr><td>Stat to Boost with Shoretrips</td>");
 		writeln("<td>");
 
