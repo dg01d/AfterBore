@@ -366,6 +366,17 @@ void summary()
 		print ("Donated to Sneaky Pete " + get_property( "heroDonationSneakyPete" ), "green");
 	}
 
+## new ##
+// checks for waiting trophies at the hut
+void check_trophies()
+{
+	string trophypage = visit_url("trophy.php");
+	matcher trophymatcher = create_matcher("entitled to the .([A-Z\\sa-z]*). Trophy" ,trophypage);
+	while (find(trophymatcher)){
+		print("You are entitled to the " + group(trophymatcher,1) + " trophy","red");
+	}
+}
+
 //Does Rollovers 
 void rollover()
 	{
@@ -443,6 +454,8 @@ void main()
 		}
 	}
 	summary();
+## new ##
+	check_trophies();
 	}
 }
 
