@@ -7,7 +7,7 @@ import <htmlform.ash>
 import <consumption.ash>
 import <zlib.ash>
 
-string thisver = "1.0";		// This is the script's version!
+string thisver = "1.01";		// This is the script's version!
 int AfterBore_PAGE = 7936;
  
 

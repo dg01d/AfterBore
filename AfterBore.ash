@@ -6,7 +6,7 @@ import <zlib.ash>
 import <eatdrink.ash>
 //script "AfterBore.ash";
 
-string thisver = "1.0";		// This is the script's version!
+string thisver = "1.01";		// This is the script's version!
 int AfterBore_PAGE = 7936;
  
  check_version("AfterBore", "AfterBore", thisver, AfterBore_PAGE);
