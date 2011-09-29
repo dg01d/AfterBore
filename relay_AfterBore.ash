@@ -26,6 +26,15 @@ int AfterBore_PAGE = 7936;
 //////////////////////////////////////////////////////////////////////
 
 
+// Setting up the Shore Trip Counter
+int done_trips = 0;
+string page = visit_url("shore.php");
+matcher shore_trips = create_matcher ( "You have taken (\\d+)" , page );
+if(shore_trips.find())
+	{
+		done_trips = (shore_trips.group(1)).to_int();
+	}
+
 void main() { 
     	write_page(); 
 	writeln(check_version("relay_AfterBore", "relayAfterBore", thisver, AfterBore_PAGE));     
@@ -183,7 +192,8 @@ void main() {
 
 		writeln("<tr><td>Shoretrips Taken To Date</td>");
 		writeln("<td>");
-		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong<br />& Reset for each Ascension", ""));
+		writeln("You have taken "+ done_trips + " shore trips!");
+//		set_property("boreShoretrips", write_field(get_property("boreShoretrips"),  "boreShoretrips", "Set this yourself if Wrong<br />& Reset for each Ascension", ""));
 //		vars["boreShoretrips"] = write_field(vars["boreShoretrips"], "afterbore shore count", "Set this yourself if Wrong <br />& Reset for each Ascension!");
 
 		writeln("</td></tr>");
