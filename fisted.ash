@@ -62,7 +62,10 @@ foreach s in $skills[
 
 // Are there unstudied scolls? Kwatz!
 int scroll = available_amount($item[Teachings of the Fist]);
-if(scroll > 0) print_html("<span style='color:#ff4500;font-weight:bold'>Kwatz! Has your candle burned out? You possess "+scroll+" Teachings of the Fist"+(scroll == 1? "": "s")+" , that remain"+(scroll == 1? "s": "")+" unread.</span>");
+if(scroll > 0) {
+		print("");
+		print_html("<span style='color:#6b8e23;font-weight:bold'>&nbsp;&nbsp;Kwatz! Has your candle burned out?<br />&nbsp;&nbsp;You possess "+scroll+" Teachings of the Fist Scroll"+(scroll == 1? "": "s")+" that remain"+(scroll == 1? "s": "")+" unread.</span>");
+		}
 		
 // Print out locations left to learn fist skills
 if(get_property("fistSkillsKnown") == "11") exit;
