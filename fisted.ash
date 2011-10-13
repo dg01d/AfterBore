@@ -5,6 +5,8 @@
 notify ShaBob;
 
 int fistScrolls = get_property("fistSkillsKnown").to_int();
+int fistCharity = get_property("charitableDonations").to_int();
+int fistBardo = get_property("totalCharitableDonations").to_int();
 
 
 string to_place(string locale) // Used to make sane outputs
@@ -84,7 +86,8 @@ void print()
 		else print_html("A student asked Zoshu  - How many skills have I learned? <br />Zoshu replied - How shall I make water?<br />Chastened, the student left to begin his studies, as should you");
 	}
 	print("");
-
+	print_html("You have donated <b>" + fistCharity +"</b> meat in this life.<br /> A voice from the bardo tells you that you have donated <b>"+fistBardo+"</b> meat in all your lives.");
+	print("");
 }
 
 
