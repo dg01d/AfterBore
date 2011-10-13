@@ -4,10 +4,15 @@
 
 notify ShaBob;
 
+if(my_path() != "Way of the Surprising Fist") {
+	print("You are not a follower of the Way of the Surprising Fist. These skills are beyond you.");
+	exit;
+}
+
+
 int fistScrolls = get_property("fistSkillsKnown").to_int();
 int fistCharity = get_property("charitableDonations").to_int();
 int fistBardo = get_property("totalCharitableDonations").to_int();
-
 
 string to_place(string locale) // Used to make sane outputs
 {
@@ -28,11 +33,45 @@ string to_place(string locale) // Used to make sane outputs
 	return $string[ Master Kan ];
 }
 
-void teach()
-	{
-	print_html("<b>You should seek Wisdom in the following locations:</b>");
 
-	foreach locale in $strings [ 	fistTeachingsBarroomBrawl,
+// Print list of skills currently known, not just scrolls studied
+skill [int] fist;
+foreach s in $skills[
+					Flying Fire Fist,
+					Salamander Kata,
+					Drunken Baby Style,
+					Stinkpalm,
+					Worldpunch,
+					Knuckle Sandwich,
+					Seven-Finger Strike,
+					Miyagi Massage,
+					Chilled Monkey Brain Technique,
+					Zendo Kobushi Kancho
+					]
+	if(have_skill(s)) fist[count(fist)] = s;
+	if(count(fist) == 10 && have_skill($skill[Master of the Surprising Fist]))
+		print_html("&nbsp;&nbsp;&nbsp;A student came to see Zonshu. Kneeling at<br />&nbsp;&nbsp;&nbsp;the masters feet he produced a Shakuhachi<br />&nbsp;&nbsp;&nbsp;and blew a single note. Zonshu rose, took<br />&nbsp;&nbsp;&nbsp;the student by the arm and placing him on<br />&nbsp;&nbsp;&nbsp;the seat cried to his students: I am one of you!");	
+	else if(count(fist) == 0)
+		print_html(
+		"&nbsp;&nbsp;&nbsp;A student asked Zoshu  - How many skills have I learned? <br />&nbsp;&nbsp;&nbsp;Zoshu replied - How shall I make water?<br />&nbsp;&nbsp;&nbsp;Chastened, the student left to begin his studies, as should you");
+	else {
+		print_html("<b>You have learned "+count(fist)+" Way"+(count(fist) == 1?"":"s")+" of the Surprising Fist</b>");
+		foreach i,s in fist
+			print_html("&nbsp;&nbsp;&nbsp;"+(s==$skill[Worldpunch]? "<span style='color:#B22222;font-weight:bold'>":"")+s+(s==$skill[Worldpunch]? "</span>":""));
+}
+
+// Are there unstudied scolls? Kwatz!
+int scroll = available_amount($item[Teachings of the Fist]);
+if(scroll > 0) print_html("<span style='color:#ff4500;font-weight:bold'>Kwatz! Has your candle burned out? You possess "+scroll+" Teachings of the Fist"+(scroll == 1? "": "s")+" , that remain"+(scroll == 1? "s": "")+" unread.</span>");
+		
+// Print out locations left to learn fist skills
+if(get_property("fistSkillsKnown") == "11") exit;
+print("");
+
+
+print_html("<b>You should seek Wisdom in the following locations:</b>");
+	foreach locale in $strings [ 	
+					fistTeachingsBarroomBrawl,
 					fistTeachingsHaikuDungeon,
 					fistTeachingsPokerRoom,
 					fistTeachingsConservatory,     
@@ -45,55 +84,12 @@ void teach()
 					fistTeachingsNinjaSnowmen     
 					]
 		if (get_property ( locale )==false) // Simple if/else validation for the coloured sane outputs
-//			{
-//			print(""+ locale.to_place() + ": True", "green" );
-//			}
-//		else
 			{
-			print(""+ locale.to_place(), "red" );
+			print_html("<font color='red'>&nbsp;&nbsp;&nbsp;"+ locale.to_place() +"</font>" );
 			}
-	}
 
-void print()
-{
 	print("");
-	print ("You have learned " + fistScrolls +" Skills", "olive"); //Outputs total skills known
-
-	if(fistScrolls > 10) 
-	{
-		print_html("A student came to see Zonshu. Kneeling at the masters feet he produced a Shakuhachi and blew a single note. Zonshu rose, took the student by the arm and placing him upon the seat cried to his students - I am one of you!");
-	}
-	else
-	{
-		if(fistScrolls > 0) 
-		{
-		skill [int] scroll;
-		foreach f in $skills[
-				Flying Fire Fist,
-				Salamander Kata,
-				Drunken Baby Style,
-				Stinkpalm,
-				Worldpunch,
-				Knuckle Sandwich,
-				Seven-Finger Strike,
-				Miyagi Massage,
-				Chilled Monkey Brain Technique,
-				Zendo Kobushi Kancho]
-		scroll[count(scroll) + 1] = f;
-		for b from 1 to fistScrolls
-			print( scroll[b] );
-		}
-		else print_html("A student asked Zoshu  - How many skills have I learned? <br />Zoshu replied - How shall I make water?<br />Chastened, the student left to begin his studies, as should you");
-	}
+	print_html("You have donated <b>" + fistCharity +"</b> meat in this life.<br /><br /> Voice from the Bardo:<br />'You donated <b>"+fistBardo+"</b> meat<br /> in this life and past'.");
 	print("");
-	print_html("You have donated <b>" + fistCharity +"</b> meat in this life.<br /> A voice from the bardo tells you that you have donated <b>"+fistBardo+"</b> meat in all your lives.");
-	print("");
-}
 
-
-void main()
-{
-	teach();
-	print();
-}
 
