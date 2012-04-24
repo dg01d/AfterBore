@@ -50,14 +50,14 @@ foreach s in $skills[
 					]
 	if(have_skill(s)) fist[count(fist)] = s;
 	if(count(fist) == 10 && have_skill($skill[Master of the Surprising Fist]))
-		print_html("&nbsp;&nbsp;&nbsp;A student came to see Zonshu. Kneeling at<br />&nbsp;&nbsp;&nbsp;the masters feet he produced a Shakuhachi<br />&nbsp;&nbsp;&nbsp;and blew a single note. Zonshu rose, took<br />&nbsp;&nbsp;&nbsp;the student by the arm and placing him on<br />&nbsp;&nbsp;&nbsp;the seat cried to his students: I am one of you!");	
+		print_html("&nbsp;&nbsp;A student came to see Zonshu. Kneeling at<br />&nbsp;&nbsp;&nbsp;the masters feet he produced a Shakuhachi<br />&nbsp;&nbsp;and blew a single note. Zonshu rose, took<br />&nbsp;&nbsp;the student by the arm and placing him on<br />&nbsp;&nbsp;the seat cried to his students: I am one of you!");	
 	else if(count(fist) == 0)
 		print_html(
-		"&nbsp;&nbsp;&nbsp;A student asked Zoshu  - How many skills have I learned? <br />&nbsp;&nbsp;&nbsp;Zoshu replied - How shall I make water?<br />&nbsp;&nbsp;&nbsp;Chastened, the student left to begin his studies, as should you");
+		"&nbsp;&nbsp;A student asked Zoshu  - How many skills have I learned? <br />&nbsp;&nbsp;&nbsp;Zoshu replied - How shall I make water?<br />&nbsp;&nbsp;Chastened, the student left to begin his studies, as should you");
 	else {
 		print_html("<b>You have learned "+count(fist)+" Way"+(count(fist) == 1?"":"s")+" of the Surprising Fist</b>");
 		foreach i,s in fist
-			print_html("&nbsp;&nbsp;&nbsp;"+(s==$skill[Worldpunch]? "<span style='color:#B22222;font-weight:bold'>":"")+s+(s==$skill[Worldpunch]? "</span>":""));
+			print_html("&nbsp;&nbsp;"+(s==$skill[Worldpunch]? "<span style='color:#B22222;font-weight:bold'>":"")+s+(s==$skill[Worldpunch]? "</span>":""));
 }
 
 // Are there unstudied scolls? Kwatz!

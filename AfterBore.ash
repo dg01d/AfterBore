@@ -3,7 +3,7 @@
 
 notify ShaBob;
 import <zlib.ash>
-import <eatdrink.ash>
+import <EatDrink.ash>
 //script "AfterBore.ash";
 
 string thisver = "1.02";		// This is the script's version!
@@ -76,6 +76,9 @@ string BORE_ROLL = vars["boreRollover"];
 string BORE_ROLL_SET = vars["boreRolloverNightCap"];
 item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
 boolean COMPLETED_SETUP = vars["bore_setup"].to_boolean();
+
+// EatDrink
+SIM_CONSUME = false;
 
 setvar("bore_setup", false);
 
