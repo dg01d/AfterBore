@@ -78,7 +78,7 @@ item BORE_ROLL_DRINK = vars["boreRolloverDrink"].to_item();
 boolean COMPLETED_SETUP = vars["bore_setup"].to_boolean();
 
 // EatDrink
-SIM_CONSUME = false;
+//SIM_CONSUME = false;
 
 setvar("bore_setup", false);
 
